@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TTLimitedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="R_AdminMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="R_AppDownloadDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="DeviceId" Type="nvarchar" MaxLength="25" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="R_AppVersion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="Version" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="R_BannerMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="300" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="R_BarcodeMaster">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsUsed" Type="bit" />
+    <Property Name="Points" Type="int" />
+    <Property Name="IsEncrypted" Type="bit" />
+  </EntityType>
+  <EntityType Name="R_CartDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+    <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
+    <Property Name="ProductQuantity" Type="int" />
+  </EntityType>
+  <EntityType Name="R_CityMaster">
+    <Key>
+      <PropertyRef Name="cityID" />
+    </Key>
+    <Property Name="cityID" Type="int" Nullable="false" />
+    <Property Name="cityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="stateName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StateId" Type="int" />
+  </EntityType>
+  <EntityType Name="R_DistributerMaster">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="R_FestivePointMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+    <Property Name="FromPoint" Type="int" />
+    <Property Name="ToPoint" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsRegistration" Type="bit" />
+    <Property Name="AddedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="R_MediaCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="70" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="R_MessageMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MessagePublishDate" Type="datetime" />
+    <Property Name="Header" Type="nvarchar" MaxLength="100" />
+    <Property Name="Message" Type="nvarchar" MaxLength="300" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="300" />
+    <Property Name="PublishFrom" Type="datetime" />
+    <Property Name="PublishTo" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="R_NotificationManager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Notification" Type="nvarchar" MaxLength="250" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="ImageUrl" Type="nchar" MaxLength="250" />
+    <Property Name="IsReplyable" Type="bit" />
+    <Property Name="Boradcast" Type="bit" />
+    <Property Name="StateCode" Type="int" />
+    <Property Name="CityCode" Type="int" />
+    <Property Name="Header" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="R_NotificationReply">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="NotificationId" Type="nvarchar" MaxLength="7" />
+    <Property Name="ReplyBy" Type="nvarchar" MaxLength="7" />
+    <Property Name="ReplyMessage" Type="nvarchar" MaxLength="500" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="R_NotificationResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="NotificationId" Type="nvarchar" MaxLength="9" />
+    <Property Name="FailMessageCount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SuccessMessageCount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="NotificationIdCount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Exception" Type="varchar" MaxLength="700" />
+  </EntityType>
+  <EntityType Name="R_OrderMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+    <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="PointsUsed" Type="bigint" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="12" />
+    <Property Name="OrderNo" Type="nvarchar" MaxLength="12" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="250" />
+    <Property Name="RetailerName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="R_PointsLedger">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="BarcodeSno" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
+    <Property Name="EarnSpentDate" Type="datetime" />
+    <Property Name="LocationX" Type="nvarchar" MaxLength="20" />
+    <Property Name="LocationY" Type="nvarchar" MaxLength="20" />
+    <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+    <Property Name="DabitPoints" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="CreditPoints" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductQty" Type="int" />
+    <Property Name="FirmName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="R_ProductMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Image" Type="nvarchar" MaxLength="250" />
+    <Property Name="Points" Type="bigint" />
+    <Property Name="Quantity" Type="bigint" />
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="Size" Type="nvarchar" MaxLength="5" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="R_Promotion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Heading" Type="nvarchar" MaxLength="100" />
+    <Property Name="HeadingText" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImageCount" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Image" Type="nvarchar" MaxLength="500" />
+    <Property Name="TotalEntries" Type="int" />
+    <Property Name="Points" Type="int" />
+  </EntityType>
+  <EntityType Name="R_PromotionEntries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="PromotionId" Type="nvarchar" MaxLength="9" />
+    <Property Name="RetailerId" Type="nvarchar" MaxLength="9" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="UpoadedDate" Type="datetime" />
+    <Property Name="IsValid" Type="bit" />
+  </EntityType>
+  <EntityType Name="R_RetailerMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="DistributorId" Type="nvarchar" MaxLength="15" />
+    <Property Name="FirmName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="12" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="StateId" Type="nvarchar" MaxLength="7" />
+    <Property Name="CityId" Type="nvarchar" MaxLength="7" />
+    <Property Name="PinCode" Type="nchar" MaxLength="8" />
+    <Property Name="ProfilePicture" Type="nvarchar" MaxLength="500" />
+    <Property Name="ShopLogo" Type="nvarchar" MaxLength="500" />
+    <Property Name="ShopGpsX" Type="nvarchar" MaxLength="20" />
+    <Property Name="ShopGpsY" Type="nvarchar" MaxLength="20" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="DistributerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DistributerCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="DistributerMobileNo" Type="nvarchar" MaxLength="12" />
+    <Property Name="RegistrationDate" Type="datetime" />
+    <Property Name="AddressGpsX" Type="nvarchar" MaxLength="20" />
+    <Property Name="AddressGpsY" Type="nvarchar" MaxLength="20" />
+    <Property Name="IsApproved" Type="bit" />
+    <Property Name="NotificationId" Type="nvarchar" MaxLength="600" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="200" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Distance" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Points" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="R_StateMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="R_UploadedMedia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="CategoryId" Type="nvarchar" MaxLength="7" />
+    <Property Name="Url" Type="nvarchar" MaxLength="150" />
+    <Property Name="UploadedBy" Type="nvarchar" MaxLength="7" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityContainer Name="TTLimitedModelStoreContainer">
+    <EntitySet Name="R_AdminMaster" EntityType="Self.R_AdminMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_AppDownloadDetail" EntityType="Self.R_AppDownloadDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_AppVersion" EntityType="Self.R_AppVersion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_BannerMaster" EntityType="Self.R_BannerMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_BarcodeMaster" EntityType="Self.R_BarcodeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_CartDetail" EntityType="Self.R_CartDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_CityMaster" EntityType="Self.R_CityMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_DistributerMaster" EntityType="Self.R_DistributerMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_FestivePointMaster" EntityType="Self.R_FestivePointMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_MediaCategory" EntityType="Self.R_MediaCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_MessageMaster" EntityType="Self.R_MessageMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_NotificationManager" EntityType="Self.R_NotificationManager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_NotificationReply" EntityType="Self.R_NotificationReply" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_NotificationResult" EntityType="Self.R_NotificationResult" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_OrderMaster" EntityType="Self.R_OrderMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_PointsLedger" EntityType="Self.R_PointsLedger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_ProductMaster" EntityType="Self.R_ProductMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_Promotion" EntityType="Self.R_Promotion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_PromotionEntries" EntityType="Self.R_PromotionEntries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_RetailerMaster" EntityType="Self.R_RetailerMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_StateMaster" EntityType="Self.R_StateMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_UploadedMedia" EntityType="Self.R_UploadedMedia" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

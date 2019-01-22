@@ -1,0 +1,906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TTLimitedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="R_AdminMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="R_AppDownloadDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="DeviceId" Type="nvarchar" MaxLength="25" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="R_AppVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Version" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="R_BannerMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="300" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="R_BarcodeMaster">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsUsed" Type="bit" />
+          <Property Name="Points" Type="int" />
+          <Property Name="IsEncrypted" Type="bit" />
+        </EntityType>
+        <EntityType Name="R_CartDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+          <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
+          <Property Name="ProductQuantity" Type="int" />
+        </EntityType>
+        <EntityType Name="R_CityMaster">
+          <Key>
+            <PropertyRef Name="cityID" />
+          </Key>
+          <Property Name="cityID" Type="int" Nullable="false" />
+          <Property Name="cityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="stateName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+        </EntityType>
+        <EntityType Name="R_DistributerMaster">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="R_FestivePointMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FromDate" Type="datetime" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="FromPoint" Type="int" />
+          <Property Name="ToPoint" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsRegistration" Type="bit" />
+          <Property Name="AddedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="R_MediaCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="70" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="R_MessageMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MessagePublishDate" Type="datetime" />
+          <Property Name="Header" Type="nvarchar" MaxLength="100" />
+          <Property Name="Message" Type="nvarchar" MaxLength="300" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="300" />
+          <Property Name="PublishFrom" Type="datetime" />
+          <Property Name="PublishTo" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="R_NotificationManager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Notification" Type="nvarchar" MaxLength="250" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="ImageUrl" Type="nchar" MaxLength="250" />
+          <Property Name="IsReplyable" Type="bit" />
+          <Property Name="Boradcast" Type="bit" />
+          <Property Name="StateCode" Type="int" />
+          <Property Name="CityCode" Type="int" />
+          <Property Name="Header" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="R_NotificationReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="NotificationId" Type="nvarchar" MaxLength="7" />
+          <Property Name="ReplyBy" Type="nvarchar" MaxLength="7" />
+          <Property Name="ReplyMessage" Type="nvarchar" MaxLength="500" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="R_NotificationResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="NotificationId" Type="nvarchar" MaxLength="9" />
+          <Property Name="FailMessageCount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SuccessMessageCount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="NotificationIdCount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Exception" Type="varchar" MaxLength="700" />
+        </EntityType>
+        <EntityType Name="R_OrderMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+          <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PointsUsed" Type="bigint" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="12" />
+          <Property Name="OrderNo" Type="nvarchar" MaxLength="12" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="250" />
+          <Property Name="RetailerName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="R_PointsLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="BarcodeSno" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
+          <Property Name="EarnSpentDate" Type="datetime" />
+          <Property Name="LocationX" Type="nvarchar" MaxLength="20" />
+          <Property Name="LocationY" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+          <Property Name="DabitPoints" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CreditPoints" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductQty" Type="int" />
+          <Property Name="FirmName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="R_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Image" Type="nvarchar" MaxLength="250" />
+          <Property Name="Points" Type="bigint" />
+          <Property Name="Quantity" Type="bigint" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Size" Type="nvarchar" MaxLength="5" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="R_Promotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Heading" Type="nvarchar" MaxLength="100" />
+          <Property Name="HeadingText" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageCount" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Image" Type="nvarchar" MaxLength="500" />
+          <Property Name="TotalEntries" Type="int" />
+          <Property Name="Points" Type="int" />
+        </EntityType>
+        <EntityType Name="R_PromotionEntries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="PromotionId" Type="nvarchar" MaxLength="9" />
+          <Property Name="RetailerId" Type="nvarchar" MaxLength="9" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpoadedDate" Type="datetime" />
+          <Property Name="IsValid" Type="bit" />
+        </EntityType>
+        <EntityType Name="R_RetailerMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="DistributorId" Type="nvarchar" MaxLength="15" />
+          <Property Name="FirmName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="12" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="StateId" Type="nvarchar" MaxLength="7" />
+          <Property Name="CityId" Type="nvarchar" MaxLength="7" />
+          <Property Name="PinCode" Type="nchar" MaxLength="8" />
+          <Property Name="ProfilePicture" Type="nvarchar" MaxLength="500" />
+          <Property Name="ShopLogo" Type="nvarchar" MaxLength="500" />
+          <Property Name="ShopGpsX" Type="nvarchar" MaxLength="20" />
+          <Property Name="ShopGpsY" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="DistributerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistributerCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistributerMobileNo" Type="nvarchar" MaxLength="12" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="AddressGpsX" Type="nvarchar" MaxLength="20" />
+          <Property Name="AddressGpsY" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="NotificationId" Type="nvarchar" MaxLength="600" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Distance" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Points" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="R_StateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="R_UploadedMedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="CategoryId" Type="nvarchar" MaxLength="7" />
+          <Property Name="Url" Type="nvarchar" MaxLength="150" />
+          <Property Name="UploadedBy" Type="nvarchar" MaxLength="7" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="TTLimitedModelStoreContainer">
+          <EntitySet Name="R_AdminMaster" EntityType="Self.R_AdminMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_AppDownloadDetail" EntityType="Self.R_AppDownloadDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_AppVersion" EntityType="Self.R_AppVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_BannerMaster" EntityType="Self.R_BannerMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_BarcodeMaster" EntityType="Self.R_BarcodeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_CartDetail" EntityType="Self.R_CartDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_CityMaster" EntityType="Self.R_CityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_DistributerMaster" EntityType="Self.R_DistributerMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_FestivePointMaster" EntityType="Self.R_FestivePointMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_MediaCategory" EntityType="Self.R_MediaCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_MessageMaster" EntityType="Self.R_MessageMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_NotificationManager" EntityType="Self.R_NotificationManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_NotificationReply" EntityType="Self.R_NotificationReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_NotificationResult" EntityType="Self.R_NotificationResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_OrderMaster" EntityType="Self.R_OrderMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_PointsLedger" EntityType="Self.R_PointsLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_ProductMaster" EntityType="Self.R_ProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_Promotion" EntityType="Self.R_Promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_PromotionEntries" EntityType="Self.R_PromotionEntries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_RetailerMaster" EntityType="Self.R_RetailerMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_StateMaster" EntityType="Self.R_StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_UploadedMedia" EntityType="Self.R_UploadedMedia" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TTLimitedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="R_AdminMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="TTLimitedEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="R_AdminMaster" EntityType="Self.R_AdminMaster" />
+          <EntitySet Name="R_CityMaster" EntityType="TTLimitedModel.R_CityMaster" />
+          <EntitySet Name="R_StateMaster" EntityType="TTLimitedModel.R_StateMaster" />
+          <EntitySet Name="R_DistributerMaster" EntityType="TTLimitedModel.R_DistributerMaster" />
+          <EntitySet Name="R_AppDownloadDetail" EntityType="TTLimitedModel.R_AppDownloadDetail" />
+          <EntitySet Name="R_BannerMaster" EntityType="TTLimitedModel.R_BannerMaster" />
+          <EntitySet Name="R_MediaCategory" EntityType="TTLimitedModel.R_MediaCategory" />
+          <EntitySet Name="R_NotificationReply" EntityType="TTLimitedModel.R_NotificationReply" />
+          <EntitySet Name="R_UploadedMedia" EntityType="TTLimitedModel.R_UploadedMedia" />
+          <EntitySet Name="R_BarcodeMaster" EntityType="TTLimitedModel.R_BarcodeMaster" />
+          <EntitySet Name="R_PointsLedger" EntityType="TTLimitedModel.R_PointsLedger" />
+          <EntitySet Name="R_CartDetail" EntityType="TTLimitedModel.R_CartDetail" />
+          <EntitySet Name="R_Promotion" EntityType="TTLimitedModel.R_Promotion" />
+          <EntitySet Name="R_ProductMaster" EntityType="TTLimitedModel.R_ProductMaster" />
+          <EntitySet Name="R_PromotionEntries" EntityType="TTLimitedModel.R_PromotionEntries" />
+          <EntitySet Name="R_AppVersion" EntityType="TTLimitedModel.R_AppVersion" />
+          <EntitySet Name="R_OrderMaster" EntityType="TTLimitedModel.R_OrderMaster" />
+          <EntitySet Name="R_NotificationResult" EntityType="TTLimitedModel.R_NotificationResult" />
+          <EntitySet Name="R_NotificationManager" EntityType="TTLimitedModel.R_NotificationManager" />
+          <EntitySet Name="R_RetailerMaster" EntityType="TTLimitedModel.R_RetailerMaster" />
+          <EntitySet Name="R_FestivePointMaster" EntityType="TTLimitedModel.R_FestivePointMaster" />
+          <EntitySet Name="R_MessageMaster" EntityType="TTLimitedModel.R_MessageMaster" />
+        </EntityContainer>
+        <EntityType Name="R_CityMaster">
+          <Key>
+            <PropertyRef Name="cityID" />
+          </Key>
+          <Property Name="cityID" Type="Int32" Nullable="false" />
+          <Property Name="cityName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="stateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="R_StateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="R_DistributerMaster">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="R_AppDownloadDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceId" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="R_BannerMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="R_MediaCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="R_NotificationReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="NotificationId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ReplyBy" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ReplyMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="R_UploadedMedia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UploadedBy" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="DisplayName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="R_BarcodeMaster">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsUsed" Type="Boolean" />
+          <Property Name="Points" Type="Int32" />
+          <Property Name="IsEncrypted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="R_PointsLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="BarcodeSno" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RetailerId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="EarnSpentDate" Type="DateTime" Precision="3" />
+          <Property Name="LocationX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LocationY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="DabitPoints" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CreditPoints" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductQty" Type="Int32" />
+          <Property Name="FirmName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="R_CartDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="RetailerId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ProductQuantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="R_Promotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Heading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HeadingText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageCount" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TotalEntries" Type="Int32" />
+          <Property Name="Points" Type="Int32" />
+        </EntityType>
+        <EntityType Name="R_ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Points" Type="Int64" />
+          <Property Name="Quantity" Type="Int64" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Size" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="R_PromotionEntries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="PromotionId" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="RetailerId" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpoadedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsValid" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="R_AppVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="R_OrderMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="RetailerId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PointsUsed" Type="Int64" />
+          <Property Name="OrderStatus" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RetailerName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="R_NotificationResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="NotificationId" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="FailMessageCount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SuccessMessageCount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="NotificationIdCount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Exception" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="R_NotificationManager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Notification" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="IsReplyable" Type="Boolean" />
+          <Property Name="Boradcast" Type="Boolean" />
+          <Property Name="StateCode" Type="Int32" />
+          <Property Name="CityCode" Type="Int32" />
+          <Property Name="Header" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="R_RetailerMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="DistributorId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FirmName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="PinCode" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="ProfilePicture" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShopLogo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShopGpsX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShopGpsY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DistributerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistributerCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistributerMobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="AddressGpsX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AddressGpsY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="NotificationId" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="StateName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Distance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Points" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="R_FestivePointMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FromDate" Type="DateTime" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="FromPoint" Type="Int32" />
+          <Property Name="ToPoint" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsRegistration" Type="Boolean" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="R_MessageMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MessagePublishDate" Type="DateTime" Precision="3" />
+          <Property Name="Header" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PublishFrom" Type="DateTime" Precision="3" />
+          <Property Name="PublishTo" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TTLimitedModelStoreContainer" CdmEntityContainer="TTLimitedEntities">
+          <EntitySetMapping Name="R_AdminMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_AdminMaster">
+              <MappingFragment StoreEntitySet="R_AdminMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_CityMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_CityMaster">
+              <MappingFragment StoreEntitySet="R_CityMaster">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="stateName" ColumnName="stateName" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_StateMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_StateMaster">
+              <MappingFragment StoreEntitySet="R_StateMaster">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_DistributerMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_DistributerMaster">
+              <MappingFragment StoreEntitySet="R_DistributerMaster">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_AppDownloadDetail">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_AppDownloadDetail">
+              <MappingFragment StoreEntitySet="R_AppDownloadDetail">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_BannerMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_BannerMaster">
+              <MappingFragment StoreEntitySet="R_BannerMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_MediaCategory">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_MediaCategory">
+              <MappingFragment StoreEntitySet="R_MediaCategory">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_NotificationReply">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_NotificationReply">
+              <MappingFragment StoreEntitySet="R_NotificationReply">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ReplyMessage" ColumnName="ReplyMessage" />
+                <ScalarProperty Name="ReplyBy" ColumnName="ReplyBy" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_UploadedMedia">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_UploadedMedia">
+              <MappingFragment StoreEntitySet="R_UploadedMedia">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UploadedBy" ColumnName="UploadedBy" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_BarcodeMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_BarcodeMaster">
+              <MappingFragment StoreEntitySet="R_BarcodeMaster">
+                <ScalarProperty Name="IsEncrypted" ColumnName="IsEncrypted" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Sno" ColumnName="Sno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_PointsLedger">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_PointsLedger">
+              <MappingFragment StoreEntitySet="R_PointsLedger">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="CreditPoints" ColumnName="CreditPoints" />
+                <ScalarProperty Name="DabitPoints" ColumnName="DabitPoints" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="EarnSpentDate" ColumnName="EarnSpentDate" />
+                <ScalarProperty Name="RetailerId" ColumnName="RetailerId" />
+                <ScalarProperty Name="BarcodeSno" ColumnName="BarcodeSno" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_CartDetail">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_CartDetail">
+              <MappingFragment StoreEntitySet="R_CartDetail">
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="RetailerId" ColumnName="RetailerId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_Promotion">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_Promotion">
+              <MappingFragment StoreEntitySet="R_Promotion">
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="TotalEntries" ColumnName="TotalEntries" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ImageCount" ColumnName="ImageCount" />
+                <ScalarProperty Name="HeadingText" ColumnName="HeadingText" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_ProductMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_ProductMaster">
+              <MappingFragment StoreEntitySet="R_ProductMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_PromotionEntries">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_PromotionEntries">
+              <MappingFragment StoreEntitySet="R_PromotionEntries">
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="UpoadedDate" ColumnName="UpoadedDate" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="RetailerId" ColumnName="RetailerId" />
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_AppVersion">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_AppVersion">
+              <MappingFragment StoreEntitySet="R_AppVersion">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_OrderMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_OrderMaster">
+              <MappingFragment StoreEntitySet="R_OrderMaster">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="RetailerName" ColumnName="RetailerName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="PointsUsed" ColumnName="PointsUsed" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="RetailerId" ColumnName="RetailerId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_NotificationResult">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_NotificationResult">
+              <MappingFragment StoreEntitySet="R_NotificationResult">
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="NotificationIdCount" ColumnName="NotificationIdCount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SuccessMessageCount" ColumnName="SuccessMessageCount" />
+                <ScalarProperty Name="FailMessageCount" ColumnName="FailMessageCount" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_NotificationManager">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_NotificationManager">
+              <MappingFragment StoreEntitySet="R_NotificationManager">
+                <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="Boradcast" ColumnName="Boradcast" />
+                <ScalarProperty Name="IsReplyable" ColumnName="IsReplyable" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Notification" ColumnName="Notification" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_RetailerMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_RetailerMaster">
+              <MappingFragment StoreEntitySet="R_RetailerMaster">
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="AddressGpsY" ColumnName="AddressGpsY" />
+                <ScalarProperty Name="AddressGpsX" ColumnName="AddressGpsX" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="DistributerMobileNo" ColumnName="DistributerMobileNo" />
+                <ScalarProperty Name="DistributerCity" ColumnName="DistributerCity" />
+                <ScalarProperty Name="DistributerName" ColumnName="DistributerName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ShopGpsY" ColumnName="ShopGpsY" />
+                <ScalarProperty Name="ShopGpsX" ColumnName="ShopGpsX" />
+                <ScalarProperty Name="ShopLogo" ColumnName="ShopLogo" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+                <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_FestivePointMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_FestivePointMaster">
+              <MappingFragment StoreEntitySet="R_FestivePointMaster">
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="IsRegistration" ColumnName="IsRegistration" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ToPoint" ColumnName="ToPoint" />
+                <ScalarProperty Name="FromPoint" ColumnName="FromPoint" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_MessageMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_MessageMaster">
+              <MappingFragment StoreEntitySet="R_MessageMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PublishTo" ColumnName="PublishTo" />
+                <ScalarProperty Name="PublishFrom" ColumnName="PublishFrom" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="MessagePublishDate" ColumnName="MessagePublishDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
