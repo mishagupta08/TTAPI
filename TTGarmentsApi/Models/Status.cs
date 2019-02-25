@@ -10,6 +10,7 @@ namespace TTGarmentsApi.Models
         Pending = 0, 
         Confirm = 1,
         Delivered = 2,
-        Rejected = 3
+        Rejected = 3,
+        OnHold = 4
     }
 }

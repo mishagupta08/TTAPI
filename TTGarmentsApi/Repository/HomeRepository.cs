@@ -702,6 +702,7 @@ namespace TTGarmentsApi.Repository
                 else
                 {
                     var pointsLedgerList = new List<R_PointsLedger>();
+                    var stri =  EncodeBarcode(filter.FilterValue, ConfigurationManager.AppSettings["Salt"]);
                     if (!string.IsNullOrEmpty(filter.FilterValue))
                     {
                         filter.FilterValue = filter.FilterValue.ToLower();
@@ -2930,6 +2931,7 @@ namespace TTGarmentsApi.Repository
                     counts.RejectOrderCount = orderList.Count(o => o.OrderStatus == Status.Rejected.ToString());
                     counts.ConfirmCount = orderList.Count(o => o.OrderStatus == Status.Confirm.ToString());
                     counts.DeliveredOrderCount = orderList.Count(o => o.OrderStatus == Status.Delivered.ToString());
+                    counts.OnHoldCount = orderList.Count(o => o.OrderStatus == Status.OnHold.ToString());
                 }
 
                 responseDetail.Status = true;
