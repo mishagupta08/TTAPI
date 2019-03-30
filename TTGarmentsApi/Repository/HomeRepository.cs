@@ -188,17 +188,17 @@ namespace TTGarmentsApi.Repository
                             var state = await Task.Run(() => states.FirstOrDefault(s => s.Id == stId));
                             if (state != null)
                             {
-                                retailerDetail.StateName = state.Name;
+                                user.StateName = state.Name;
                             }
                             var city = await Task.Run(() => cities.FirstOrDefault(s => s.cityID == ctId));
                             if (city != null)
                             {
-                                retailerDetail.CityName = city.cityName;
+                                user.CityName = city.cityName;
                             }
 
-                            retailerDetail.Points = await this.GetCurrentBalacePoints(pointsList, retailerDetail.ID);
+                            user.Points = await this.GetCurrentBalacePoints(pointsList, retailerDetail.ID);
                             retailerDetail.Distance = Convert.ToDecimal(FindDistance(retailerDetail.AddressGpsX, retailerDetail.AddressGpsY, retailerDetail.ShopGpsX, retailerDetail.ShopGpsY));
-                            retailerDetail.Distance = retailerDetail.Distance / 1000;
+                            user.Distance = retailerDetail.Distance / 1000;
 
                             /**************End***************/
 

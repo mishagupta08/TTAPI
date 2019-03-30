@@ -124,7 +124,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TTGarmentsApi.dll">
-      <publishTime>01/19/2019 14:40:03</publishTime>
+      <publishTime>03/11/2019 12:32:05</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>10/09/2013 17:28:38</publishTime>
