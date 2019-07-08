@@ -25,3 +25,7 @@ $RECYCLE.BIN/
 /TTGarmentsApi/obj
 /TTGarmentsApi/bin
 /TTGarmentsApi/Properties/PublishProfiles
+/TTGarmentsApi/bin
+web.config
+/TTGarmentsApi/bin
+/TTGarmentsApi/obj
