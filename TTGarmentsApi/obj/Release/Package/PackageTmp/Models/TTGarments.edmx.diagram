@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05378851cdb14890b31f69b0d28bac1a" Name="Diagram1">
+        <EntityTypeShape EntityType="TTLimitedModel.R_AdminMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_CityMaster" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_StateMaster" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_DistributerMaster" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_AppDownloadDetail" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_BannerMaster" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_MediaCategory" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_NotificationReply" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_UploadedMedia" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_BarcodeMaster" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_PointsLedger" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_CartDetail" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_Promotion" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_ProductMaster" Width="1.5" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_PromotionEntries" Width="1.5" PointX="11.375" PointY="7.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_AppVersion" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_OrderMaster" Width="1.5" PointX="11.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_NotificationResult" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_NotificationManager" Width="1.5" PointX="3.375" PointY="12.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_RetailerMaster" Width="1.5" PointX="7.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_FestivePointMaster" Width="1.5" PointX="13.375" PointY="4.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_MessageMaster" Width="1.5" PointX="13.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
