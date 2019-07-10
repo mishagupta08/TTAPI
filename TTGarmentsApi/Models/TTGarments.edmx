@@ -167,7 +167,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="BarcodeSno" Type="decimal" Precision="18" Scale="0" />
           <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
           <Property Name="EarnSpentDate" Type="datetime" />
@@ -176,7 +176,7 @@
           <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
           <Property Name="DabitPoints" Type="decimal" Precision="18" Scale="0" />
           <Property Name="CreditPoints" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="100" />
           <Property Name="ProductQty" Type="int" />
           <Property Name="FirmName" Type="nvarchar" MaxLength="200" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="200" />
@@ -250,6 +250,7 @@
           <Property Name="CityName" Type="nvarchar" MaxLength="200" />
           <Property Name="Distance" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Points" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IsBlock" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="R_StateMaster">
           <Key>
@@ -419,7 +420,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="BarcodeSno" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="RetailerId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
           <Property Name="EarnSpentDate" Type="DateTime" Precision="3" />
@@ -428,7 +429,7 @@
           <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
           <Property Name="DabitPoints" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CreditPoints" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ProductQty" Type="Int32" />
           <Property Name="FirmName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -560,6 +561,7 @@
           <Property Name="CityName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Distance" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Points" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsBlock" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="R_FestivePointMaster">
           <Key>
@@ -822,6 +824,7 @@
           <EntitySetMapping Name="R_RetailerMaster">
             <EntityTypeMapping TypeName="TTLimitedModel.R_RetailerMaster">
               <MappingFragment StoreEntitySet="R_RetailerMaster">
+                <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
                 <ScalarProperty Name="Points" ColumnName="Points" />
                 <ScalarProperty Name="Distance" ColumnName="Distance" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />

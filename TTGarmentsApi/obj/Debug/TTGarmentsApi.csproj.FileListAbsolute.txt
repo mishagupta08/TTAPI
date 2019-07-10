@@ -187,6 +187,6 @@ E:\Workarea\TTAPI\TTGarmentsApi\bin\Newtonsoft.Json.xml
 E:\Workarea\TTAPI\TTGarmentsApi\bin\System.Net.Http.Formatting.xml
 E:\Workarea\TTAPI\TTGarmentsApi\bin\System.Web.Http.xml
 E:\Workarea\TTAPI\TTGarmentsApi\bin\System.Web.Http.WebHost.xml
-E:\Workarea\TTAPI\TTGarmentsApi\obj\Debug\TTGarmentsApi.csprojResolveAssemblyReference.cache
 E:\Workarea\TTAPI\TTGarmentsApi\obj\Debug\TTGarmentsApi.dll
 E:\Workarea\TTAPI\TTGarmentsApi\obj\Debug\TTGarmentsApi.pdb
+E:\Workarea\TTAPI\TTGarmentsApi\obj\Debug\TTGarmentsApi.csprojResolveAssemblyReference.cache

@@ -162,7 +162,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="BarcodeSno" Type="decimal" Precision="18" Scale="0" />
     <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
     <Property Name="EarnSpentDate" Type="datetime" />
@@ -171,7 +171,7 @@
     <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
     <Property Name="DabitPoints" Type="decimal" Precision="18" Scale="0" />
     <Property Name="CreditPoints" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Barcode" Type="nvarchar" MaxLength="100" />
     <Property Name="ProductQty" Type="int" />
     <Property Name="FirmName" Type="nvarchar" MaxLength="200" />
     <Property Name="ProductName" Type="nvarchar" MaxLength="200" />
@@ -245,6 +245,7 @@
     <Property Name="CityName" Type="nvarchar" MaxLength="200" />
     <Property Name="Distance" Type="numeric" Precision="18" Scale="0" />
     <Property Name="Points" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="IsBlock" Type="varchar" MaxLength="1" />
   </EntityType>
   <EntityType Name="R_StateMaster">
     <Key>

@@ -121,7 +121,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
     <Property Name="BarcodeSno" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="RetailerId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
     <Property Name="EarnSpentDate" Type="DateTime" Precision="3" />
@@ -130,7 +130,7 @@
     <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
     <Property Name="DabitPoints" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="CreditPoints" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="ProductQty" Type="Int32" />
     <Property Name="FirmName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -262,6 +262,7 @@
     <Property Name="CityName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Distance" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Points" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsBlock" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="R_FestivePointMaster">
     <Key>

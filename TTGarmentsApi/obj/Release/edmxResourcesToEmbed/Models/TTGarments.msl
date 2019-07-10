@@ -230,6 +230,7 @@
     <EntitySetMapping Name="R_RetailerMaster">
       <EntityTypeMapping TypeName="TTLimitedModel.R_RetailerMaster">
         <MappingFragment StoreEntitySet="R_RetailerMaster">
+          <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
           <ScalarProperty Name="Points" ColumnName="Points" />
           <ScalarProperty Name="Distance" ColumnName="Distance" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />

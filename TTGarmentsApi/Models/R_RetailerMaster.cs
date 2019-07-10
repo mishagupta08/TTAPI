@@ -41,5 +41,6 @@ namespace TTGarmentsApi.Models
         public string CityName { get; set; }
         public Nullable<decimal> Distance { get; set; }
         public Nullable<decimal> Points { get; set; }
+        public string IsBlock { get; set; }
     }
 }

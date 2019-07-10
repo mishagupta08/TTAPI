@@ -174,7 +174,7 @@ namespace TTGarmentsApi.Repository
                             user.DistributerCity = retailerDetail.DistributerCity;
                             user.DistributerName = retailerDetail.DistributerName;
                             user.DistributerMobileNo = retailerDetail.DistributerMobileNo;
-
+                            user.IsBlock = retailerDetail.IsBlock;
                             /*****Assign newly added fields*****/
 
                             var stId = Convert.ToInt32(retailerDetail.StateId);
@@ -182,7 +182,7 @@ namespace TTGarmentsApi.Repository
 
                             var states = await Task.Run(() => entity.R_StateMaster.ToList());
                             var cities = await Task.Run(() => entity.R_CityMaster.ToList());
-                            var pointsList = await Task.Run(() => entity.R_PointsLedger.ToList());
+                            var pointsList = await Task.Run(() => entity.R_PointsLedger.Where(r=>r.RetailerId == retailerDetail.ID).ToList());
 
 
                             var state = await Task.Run(() => states.FirstOrDefault(s => s.Id == stId));
@@ -1467,16 +1467,27 @@ namespace TTGarmentsApi.Repository
                 responseDetail.ResponseValue = "Please send complete details.";
             }
 
-            var user = await Task.Run(() => entity.R_AdminMaster.FirstOrDefault(g => g.Username == username && g.Password == password));
+            try
+            {
+                var user = await Task.Run(() => entity.R_AdminMaster.FirstOrDefault(g => g.Username == username && g.Password == password));
 
-            if (user == null)
-            {
-                responseDetail.ResponseValue = "Invalid username or password.";
+                if (user == null)
+                {
+                    responseDetail.ResponseValue = "Invalid username or password.";
+                }
+                else
+                {
+                    responseDetail.Status = true;
+                    responseDetail.ResponseValue = new JavaScriptSerializer().Serialize(user);
+                }
             }
-            else
+
+            catch (Exception ex)
             {
-                responseDetail.Status = true;
-                responseDetail.ResponseValue = new JavaScriptSerializer().Serialize(user);
+                if ( ex.InnerException != null && ex.InnerException.StackTrace != null)
+                {
+                    responseDetail.ResponseValue = ex.InnerException.Message;
+                }
             }
 
             return responseDetail;
@@ -1997,7 +2008,7 @@ namespace TTGarmentsApi.Repository
                             // bar code is fresh so dabit points to reatiler.
                             barcode.IsUsed = true;
                             var points = new R_PointsLedger();
-                            points.Id = Guid.NewGuid().ToString().Substring(0, 5);
+                            points.Id = Guid.NewGuid().ToString().Substring(0, 10);
                             points.BarcodeSno = barcode.Sno;
                             points.Barcode = barcodeDetail.Barcode;
                             points.DabitPoints = barcode.Points;
