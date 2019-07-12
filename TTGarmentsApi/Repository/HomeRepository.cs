@@ -1910,36 +1910,45 @@ namespace TTGarmentsApi.Repository
             }
             else
             {
-                order.OrderStatus = detail.OrderStatus;
-                if (detail.OrderStatus == Status.Rejected.ToString())
+                var previousStatus = order.OrderStatus;                
+                if (previousStatus == detail.OrderStatus)
                 {
-                    /***Add Points Back on Order Reject***/
-
-                    var points = new R_PointsLedger();
-                    points.Id = Guid.NewGuid().ToString().Substring(0, 5);
-                    points.Barcode = "-Add Rejected Product Points Back- On Order # " + order.OrderNo;
-                    points.DabitPoints = order.PointsUsed;
-                    points.EarnSpentDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
-                    points.RetailerId = order.RetailerId;
-                    points.FirmName = order.RetailerName;
-                    points.ProductQty = 0;
-                    entity.R_PointsLedger.Add(points);
-
-
-                    /**************End***************/
+                    responseDetail.ResponseValue = "Order is already :" + detail.OrderStatus;
+                    responseDetail.Status = true;
                 }
+                else
+                {
+                    order.OrderStatus = detail.OrderStatus;
+                    if (detail.OrderStatus == Status.Rejected.ToString())
+                    {
+                        /***Add Points Back on Order Reject***/
+
+                        var points = new R_PointsLedger();
+                        points.Id = Guid.NewGuid().ToString().Substring(0, 5);
+                        points.Barcode = "-Add Rejected Product Points Back- On Order # " + order.OrderNo;
+                        points.DabitPoints = order.PointsUsed;
+                        points.EarnSpentDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                        points.RetailerId = order.RetailerId;
+                        points.FirmName = order.RetailerName;
+                        points.ProductQty = 0;
+                        entity.R_PointsLedger.Add(points);
+
+
+                        /**************End***************/
+                    }
 
                 await entity.SaveChangesAsync();
 
-                var retailer = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(p => p.ID == order.RetailerId));
+                    var retailer = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(p => p.ID == order.RetailerId));
 
-                var pointsList = await Task.Run(() => entity.R_PointsLedger);
-                responseDetail.Points = await this.GetCurrentBalacePoints(pointsList, order.RetailerId);
-                retailer.Points = responseDetail.Points;
+                    var pointsList = await Task.Run(() => entity.R_PointsLedger);
+                    responseDetail.Points = await this.GetCurrentBalacePoints(pointsList, order.RetailerId);
+                    retailer.Points = responseDetail.Points;
                 await entity.SaveChangesAsync();
-                
-                responseDetail.ResponseValue = "Status updated successfully.";
-                responseDetail.Status = true;
+
+                    responseDetail.ResponseValue = "Status updated successfully.";
+                    responseDetail.Status = true;
+                }
             }
 
             return responseDetail;
