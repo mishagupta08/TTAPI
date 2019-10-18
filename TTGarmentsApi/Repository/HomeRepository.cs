@@ -1910,7 +1910,7 @@ namespace TTGarmentsApi.Repository
             }
             else
             {
-                var previousStatus = order.OrderStatus;                
+                var previousStatus = order.OrderStatus;
                 if (previousStatus == detail.OrderStatus)
                 {
                     responseDetail.ResponseValue = "Order is already :" + detail.OrderStatus;
@@ -1937,18 +1937,27 @@ namespace TTGarmentsApi.Repository
                         /**************End***************/
                     }
 
-                await entity.SaveChangesAsync();
-
+                    await entity.SaveChangesAsync();
                     var retailer = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(p => p.ID == order.RetailerId));
-
+               
+                    if (detail.OrderStatus == Status.Delivered.ToString())
+                    {
+                        string message = "Your " + order.OrderNo + " had been delivered. Enjoy your Gift. If you did not receive it properly please inform through at kolkata@ttlimited.co.in within 2 days.";
+                        await SendMessage(retailer.Mobile, message);
+                    }
+                                
                     var pointsList = await Task.Run(() => entity.R_PointsLedger);
                     responseDetail.Points = await this.GetCurrentBalacePoints(pointsList, order.RetailerId);
                     retailer.Points = responseDetail.Points;
-                await entity.SaveChangesAsync();
+                    await entity.SaveChangesAsync();
 
                     responseDetail.ResponseValue = "Status updated successfully.";
                     responseDetail.Status = true;
+
+                    
                 }
+
+                
             }
 
             return responseDetail;
@@ -2977,7 +2986,7 @@ namespace TTGarmentsApi.Repository
                 }
                 else
                 {
-                    await SendMessage(retailer.Mobile, retailer.Password);
+                    await SendMessage(retailer.Mobile, "Your Forgot Login password for TT Retailer Club app is " + retailer.Password + ".");
                     responseDetail.Status = true;
                     responseDetail.ResponseValue = "Password has been sent to your registered mobile no.";
                 }
@@ -3484,10 +3493,9 @@ namespace TTGarmentsApi.Repository
 
         public async Task SendMessage(string mobileNo, string MessageBody)
         {
-            var msgUrl = "http://49.50.77.216/API/SMSHttp.aspx?UserId=ttretailer&pwd=TTrlr456&Message=Your Forgot Login password for TT Retailer Club app is {passwordValue}.&Contacts={ContactsValue}&SenderId=TTRtlr";
-
-
-            msgUrl = msgUrl.Replace("{passwordValue}", MessageBody).Replace("{ContactsValue}", mobileNo);
+            var msgUrl = "http://49.50.77.216/API/SMSHttp.aspx?UserId=ttretailer&pwd=TTrlr456&Message={MessageBody}&Contacts={ContactsValue}&SenderId=TTRtlr";
+            
+            msgUrl = msgUrl.Replace("{MessageBody}", MessageBody).Replace("{ContactsValue}", mobileNo);
 
             using (var httpClient = new HttpClient())
             {
