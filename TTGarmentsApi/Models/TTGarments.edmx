@@ -91,6 +91,13 @@
           <Property Name="IsRegistration" Type="bit" />
           <Property Name="AddedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="R_MasterSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="HelplineNo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="R_MediaCategory">
           <Key>
             <PropertyRef Name="Id" />
@@ -281,6 +288,7 @@
           <EntitySet Name="R_CityMaster" EntityType="Self.R_CityMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_DistributerMaster" EntityType="Self.R_DistributerMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_FestivePointMaster" EntityType="Self.R_FestivePointMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_MasterSetting" EntityType="Self.R_MasterSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_MediaCategory" EntityType="Self.R_MediaCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_MessageMaster" EntityType="Self.R_MessageMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_NotificationManager" EntityType="Self.R_NotificationManager" Schema="dbo" store:Type="Tables" />
@@ -334,6 +342,7 @@
           <EntitySet Name="R_RetailerMaster" EntityType="TTLimitedModel.R_RetailerMaster" />
           <EntitySet Name="R_FestivePointMaster" EntityType="TTLimitedModel.R_FestivePointMaster" />
           <EntitySet Name="R_MessageMaster" EntityType="TTLimitedModel.R_MessageMaster" />
+          <EntitySet Name="R_MasterSetting" EntityType="TTLimitedModel.R_MasterSetting" />
         </EntityContainer>
         <EntityType Name="R_CityMaster">
           <Key>
@@ -588,6 +597,13 @@
           <Property Name="PublishFrom" Type="DateTime" Precision="3" />
           <Property Name="PublishTo" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="R_MasterSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="HelplineNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -879,6 +895,14 @@
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
                 <ScalarProperty Name="MessagePublishDate" ColumnName="MessagePublishDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_MasterSetting">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_MasterSetting">
+              <MappingFragment StoreEntitySet="R_MasterSetting">
+                <ScalarProperty Name="HelplineNo" ColumnName="HelplineNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

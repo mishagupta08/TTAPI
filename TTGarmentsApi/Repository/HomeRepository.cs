@@ -3660,5 +3660,45 @@ namespace TTGarmentsApi.Repository
                 return Convert.ToBase64String(mso.ToArray());
             }
         }
+
+        public async Task<Response> ManageSetting(R_MasterSetting details, string operation)
+        {
+            Response responseDetail = new Response();
+            if (string.IsNullOrEmpty(operation) || details == null)
+            {
+                responseDetail.ResponseValue = "Please send complete details.";
+            }
+
+             if (operation == "Edit")
+            {
+                var setting = entity.R_MasterSetting.FirstOrDefault(g => g.Id == details.Id);
+                if (setting == null)
+                {
+                    responseDetail.ResponseValue = "Details not found.";
+                }
+                else
+                {                    
+                        setting.HelplineNo = details.HelplineNo;                       
+                        responseDetail.Status = true;
+                        responseDetail.ResponseValue = "Updated successfully.";                    
+                        await entity.SaveChangesAsync();
+                }
+            }
+            
+            else if (operation == "List")
+            {
+                var Settings = await Task.Run(() => entity.R_MasterSetting.FirstOrDefault());
+                if (Settings == null)
+                {
+                    responseDetail.ResponseValue = "No Records found.";
+                }
+                else
+                {                    
+                    responseDetail.Status = true;
+                    responseDetail.ResponseValue = new JavaScriptSerializer().Serialize(Settings);
+                }
+            }
+            return responseDetail;
+        }
     }
 }

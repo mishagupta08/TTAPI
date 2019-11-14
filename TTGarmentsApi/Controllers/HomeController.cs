@@ -322,5 +322,16 @@ namespace TTGarmentsApi.Controllers
             var result = await this.repository.UpdateStatus(filters);
             return Content(HttpStatusCode.OK, result, Configuration.Formatters.JsonFormatter);
         }
+
+        
+        [HttpPost, Route("api/Home/ManageSetting/{operation}")]
+        public async Task<IHttpActionResult> ManageSetting(string operation)
+        {
+            var detail = await Request.Content.ReadAsStringAsync();
+            var filters = JsonConvert.DeserializeObject<R_MasterSetting>(detail);
+            this.repository = new HomeRepository();
+            var result = await this.repository.ManageSetting(filters, operation);
+            return Content(HttpStatusCode.OK, result, Configuration.Formatters.JsonFormatter);
+        }
     }
 }

@@ -27,6 +27,7 @@
         <EntityTypeShape EntityType="TTLimitedModel.R_RetailerMaster" Width="1.5" PointX="7.375" PointY="10.75" />
         <EntityTypeShape EntityType="TTLimitedModel.R_FestivePointMaster" Width="1.5" PointX="13.375" PointY="4.75" />
         <EntityTypeShape EntityType="TTLimitedModel.R_MessageMaster" Width="1.5" PointX="13.375" PointY="8.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_MasterSetting" Width="1.5" PointX="13.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

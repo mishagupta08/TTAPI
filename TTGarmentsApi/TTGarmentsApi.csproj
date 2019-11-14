@@ -230,6 +230,9 @@
     <Compile Include="Models\R_FestivePointMaster.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\R_MasterSetting.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\R_MediaCategory.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>

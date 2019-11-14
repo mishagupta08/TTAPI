@@ -47,5 +47,6 @@ namespace TTGarmentsApi.Models
         public virtual DbSet<R_RetailerMaster> R_RetailerMaster { get; set; }
         public virtual DbSet<R_FestivePointMaster> R_FestivePointMaster { get; set; }
         public virtual DbSet<R_MessageMaster> R_MessageMaster { get; set; }
+        public virtual DbSet<R_MasterSetting> R_MasterSetting { get; set; }
     }
 }
