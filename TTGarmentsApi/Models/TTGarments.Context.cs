@@ -44,9 +44,9 @@ namespace TTGarmentsApi.Models
         public virtual DbSet<R_OrderMaster> R_OrderMaster { get; set; }
         public virtual DbSet<R_NotificationResult> R_NotificationResult { get; set; }
         public virtual DbSet<R_NotificationManager> R_NotificationManager { get; set; }
-        public virtual DbSet<R_RetailerMaster> R_RetailerMaster { get; set; }
         public virtual DbSet<R_FestivePointMaster> R_FestivePointMaster { get; set; }
         public virtual DbSet<R_MessageMaster> R_MessageMaster { get; set; }
         public virtual DbSet<R_MasterSetting> R_MasterSetting { get; set; }
+        public virtual DbSet<R_RetailerMaster> R_RetailerMaster { get; set; }
     }
 }

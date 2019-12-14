@@ -258,6 +258,7 @@
           <Property Name="Distance" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Points" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IsBlock" Type="varchar" MaxLength="1" />
+          <Property Name="TotalEarned" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="R_StateMaster">
           <Key>
@@ -339,10 +340,10 @@
           <EntitySet Name="R_OrderMaster" EntityType="TTLimitedModel.R_OrderMaster" />
           <EntitySet Name="R_NotificationResult" EntityType="TTLimitedModel.R_NotificationResult" />
           <EntitySet Name="R_NotificationManager" EntityType="TTLimitedModel.R_NotificationManager" />
-          <EntitySet Name="R_RetailerMaster" EntityType="TTLimitedModel.R_RetailerMaster" />
           <EntitySet Name="R_FestivePointMaster" EntityType="TTLimitedModel.R_FestivePointMaster" />
           <EntitySet Name="R_MessageMaster" EntityType="TTLimitedModel.R_MessageMaster" />
           <EntitySet Name="R_MasterSetting" EntityType="TTLimitedModel.R_MasterSetting" />
+          <EntitySet Name="R_RetailerMaster" EntityType="TTLimitedModel.R_RetailerMaster" />
         </EntityContainer>
         <EntityType Name="R_CityMaster">
           <Key>
@@ -539,39 +540,6 @@
           <Property Name="CityCode" Type="Int32" />
           <Property Name="Header" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="R_RetailerMaster">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
-          <Property Name="DistributorId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="FirmName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="StateId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
-          <Property Name="CityId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
-          <Property Name="PinCode" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
-          <Property Name="ProfilePicture" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ShopLogo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ShopGpsX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ShopGpsY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DistributerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DistributerCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DistributerMobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
-          <Property Name="AddressGpsX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="AddressGpsY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="IsApproved" Type="Boolean" />
-          <Property Name="NotificationId" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
-          <Property Name="StateName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CityName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Distance" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Points" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="IsBlock" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="R_FestivePointMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -604,6 +572,40 @@
           </Key>
           <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
           <Property Name="HelplineNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="R_RetailerMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="DistributorId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FirmName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="PinCode" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="ProfilePicture" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShopLogo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShopGpsX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShopGpsY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DistributerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistributerCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistributerMobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="AddressGpsX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AddressGpsY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="NotificationId" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="StateName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Distance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Points" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsBlock" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TotalEarned" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -837,40 +839,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="R_RetailerMaster">
-            <EntityTypeMapping TypeName="TTLimitedModel.R_RetailerMaster">
-              <MappingFragment StoreEntitySet="R_RetailerMaster">
-                <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
-                <ScalarProperty Name="Points" ColumnName="Points" />
-                <ScalarProperty Name="Distance" ColumnName="Distance" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="AddressGpsY" ColumnName="AddressGpsY" />
-                <ScalarProperty Name="AddressGpsX" ColumnName="AddressGpsX" />
-                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
-                <ScalarProperty Name="DistributerMobileNo" ColumnName="DistributerMobileNo" />
-                <ScalarProperty Name="DistributerCity" ColumnName="DistributerCity" />
-                <ScalarProperty Name="DistributerName" ColumnName="DistributerName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ShopGpsY" ColumnName="ShopGpsY" />
-                <ScalarProperty Name="ShopGpsX" ColumnName="ShopGpsX" />
-                <ScalarProperty Name="ShopLogo" ColumnName="ShopLogo" />
-                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
-                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="FirmName" ColumnName="FirmName" />
-                <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="R_FestivePointMaster">
             <EntityTypeMapping TypeName="TTLimitedModel.R_FestivePointMaster">
               <MappingFragment StoreEntitySet="R_FestivePointMaster">
@@ -904,6 +872,41 @@
               <MappingFragment StoreEntitySet="R_MasterSetting">
                 <ScalarProperty Name="HelplineNo" ColumnName="HelplineNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_RetailerMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_RetailerMaster">
+              <MappingFragment StoreEntitySet="R_RetailerMaster">
+                <ScalarProperty Name="TotalEarned" ColumnName="TotalEarned" />
+                <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="AddressGpsY" ColumnName="AddressGpsY" />
+                <ScalarProperty Name="AddressGpsX" ColumnName="AddressGpsX" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="DistributerMobileNo" ColumnName="DistributerMobileNo" />
+                <ScalarProperty Name="DistributerCity" ColumnName="DistributerCity" />
+                <ScalarProperty Name="DistributerName" ColumnName="DistributerName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ShopGpsY" ColumnName="ShopGpsY" />
+                <ScalarProperty Name="ShopGpsX" ColumnName="ShopGpsX" />
+                <ScalarProperty Name="ShopLogo" ColumnName="ShopLogo" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+                <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

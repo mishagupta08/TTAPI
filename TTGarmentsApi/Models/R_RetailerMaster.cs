@@ -42,5 +42,6 @@ namespace TTGarmentsApi.Models
         public Nullable<decimal> Distance { get; set; }
         public Nullable<decimal> Points { get; set; }
         public string IsBlock { get; set; }
+        public Nullable<decimal> TotalEarned { get; set; }
     }
 }

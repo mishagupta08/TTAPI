@@ -104,6 +104,7 @@ namespace TTGarmentsApi.Repository
                                 }
 
                                 retailerDetail.Points = 50;
+                                retailerDetail.TotalEarned = 50;
                                 retailerDetail.Distance = Convert.ToDecimal(FindDistance(retailerDetail.AddressGpsX, retailerDetail.AddressGpsY, retailerDetail.ShopGpsX, retailerDetail.ShopGpsY));
                                 retailerDetail.Distance = retailerDetail.Distance / 1000;
 
@@ -2047,7 +2048,7 @@ namespace TTGarmentsApi.Repository
 
                             var pointsList = await Task.Run(() => entity.R_PointsLedger.ToList());
                             retailer.Points = await this.GetCurrentBalacePoints(pointsList, retailer.ID);
-
+                            retailer.TotalEarned = retailer.TotalEarned + barcode.Points;
                             await entity.SaveChangesAsync();
                             responseDetail.Status = true;
                             responseDetail.ResponseValue = points.DabitPoints + " Point Assigned Successfully.";
@@ -3539,6 +3540,7 @@ namespace TTGarmentsApi.Repository
                         var pointsList = await Task.Run(() => entity.R_PointsLedger.Where(p => p.RetailerId == retailerId));
                         var data = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(o => o.ID == retailerId));
                         data.Points = await this.GetCurrentBalacePoints(pointsList, data.ID);
+                        data.TotalEarned = data.TotalEarned + points;
                         await entity.SaveChangesAsync();
                     }
                 }
