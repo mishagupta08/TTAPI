@@ -634,6 +634,10 @@ namespace TTGarmentsApi.Repository
                         {
                             retailerList = await Task.Run(() => this.entity.R_RetailerMaster.Where(r => (!string.IsNullOrEmpty(r.StateName) && r.StateName.ToLower().Contains(filter.FilterValue))).ToList());
                         }
+                        if (filter.SelectedFilterName == "PinCode")
+                        {
+                            retailerList = await Task.Run(() => this.entity.R_RetailerMaster.Where(r => (!string.IsNullOrEmpty(r.PinCode) && r.PinCode.Contains(filter.FilterValue))).ToList());
+                        }
                     }
                     if (!string.IsNullOrEmpty(filter.FromDate))
                     {
@@ -1966,15 +1970,14 @@ namespace TTGarmentsApi.Repository
 
         public async Task<Response> ScanBarcode(BarcodeDetail barcodeDetail)
         {
-            Response responseDetail = new Response();
-
+            Response responseDetail = new Response();           
             if (barcodeDetail == null || string.IsNullOrEmpty(barcodeDetail.RetailerId))
             {
                 responseDetail.ResponseValue = "Please send complete details.";
             }
 
             // First check if retailer available or not
-            var retailer = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(c => c.ID == barcodeDetail.RetailerId));
+            var retailer = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(r=>r.ID == barcodeDetail.RetailerId));
 
             if (retailer == null)
             {
@@ -2024,28 +2027,30 @@ namespace TTGarmentsApi.Repository
                         }
                         else
                         {
-                            // bar code is fresh so dabit points to reatiler.
                             barcode.IsUsed = true;
                             var points = new R_PointsLedger();
-                            points.Id = Guid.NewGuid().ToString().Substring(0, 10);
-                            points.BarcodeSno = barcode.Sno;
-                            points.Barcode = barcodeDetail.Barcode;
-                            points.DabitPoints = barcode.Points;
-                            points.EarnSpentDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
-                            points.LocationX = barcodeDetail.LocationX;
-                            points.LocationY = barcodeDetail.LocationY;
-                            points.RetailerId = barcodeDetail.RetailerId;
-                            points.FirmName = retailer.FirmName;
-                            points.ProductQty = 0;
+                            
+                                // bar code is fresh so dabit points to reatiler.
+                                
+                                points.Id = Guid.NewGuid().ToString().Substring(0, 10);
+                                points.BarcodeSno = barcode.Sno;
+                                points.Barcode = barcodeDetail.Barcode;
+                                points.DabitPoints = barcode.Points;
+                                points.EarnSpentDate = DateTime.Now;
+                                points.LocationX = barcodeDetail.LocationX;
+                                points.LocationY = barcodeDetail.LocationY;
+                                points.RetailerId = barcodeDetail.RetailerId;
+                                points.FirmName = retailer.FirmName;
+                                points.ProductQty = 0;
 
 
-                            /*****Check for festive point*****/
-                            points.DabitPoints = await CheckPoints(points);
+                                /*****Check for festive point*****/
+                                points.DabitPoints = await CheckPoints(points);
 
-                            entity.R_PointsLedger.Add(points);
+                                entity.R_PointsLedger.Add(points);
 
-                            await entity.SaveChangesAsync();
-
+                                await entity.SaveChangesAsync();
+                            
                             var pointsList = await Task.Run(() => entity.R_PointsLedger.ToList());
                             retailer.Points = await this.GetCurrentBalacePoints(pointsList, retailer.ID);
                             retailer.TotalEarned = retailer.TotalEarned + barcode.Points;
