@@ -12,6 +12,8 @@ namespace TTGarmentsApi.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class TTLimitedEntities : DbContext
     {
@@ -35,7 +37,6 @@ namespace TTGarmentsApi.Models
         public virtual DbSet<R_NotificationReply> R_NotificationReply { get; set; }
         public virtual DbSet<R_UploadedMedia> R_UploadedMedia { get; set; }
         public virtual DbSet<R_BarcodeMaster> R_BarcodeMaster { get; set; }
-        public virtual DbSet<R_PointsLedger> R_PointsLedger { get; set; }
         public virtual DbSet<R_CartDetail> R_CartDetail { get; set; }
         public virtual DbSet<R_Promotion> R_Promotion { get; set; }
         public virtual DbSet<R_ProductMaster> R_ProductMaster { get; set; }
@@ -48,5 +49,15 @@ namespace TTGarmentsApi.Models
         public virtual DbSet<R_MessageMaster> R_MessageMaster { get; set; }
         public virtual DbSet<R_MasterSetting> R_MasterSetting { get; set; }
         public virtual DbSet<R_RetailerMaster> R_RetailerMaster { get; set; }
+        public virtual DbSet<R_PointsLedger> R_PointsLedger { get; set; }
+    
+        public virtual ObjectResult<BalancePoint> CalculatePointBalance(string retailerId)
+        {
+            var retailerIdParameter = retailerId != null ?
+                new ObjectParameter("RetailerId", retailerId) :
+                new ObjectParameter("RetailerId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalancePoint>("CalculatePointBalance", retailerIdParameter);
+        }
     }
 }

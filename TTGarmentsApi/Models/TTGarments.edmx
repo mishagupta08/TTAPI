@@ -174,7 +174,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="BarcodeSno" Type="decimal" Precision="18" Scale="0" />
           <Property Name="RetailerId" Type="nvarchar" MaxLength="7" />
           <Property Name="EarnSpentDate" Type="datetime" />
@@ -279,6 +279,9 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="DisplayName" Type="nvarchar" MaxLength="250" />
         </EntityType>
+        <Function Name="CalculatePointBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RetailerId" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="TTLimitedModelStoreContainer">
           <EntitySet Name="R_AdminMaster" EntityType="Self.R_AdminMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_AppDownloadDetail" EntityType="Self.R_AppDownloadDetail" Schema="dbo" store:Type="Tables" />
@@ -331,7 +334,6 @@
           <EntitySet Name="R_NotificationReply" EntityType="TTLimitedModel.R_NotificationReply" />
           <EntitySet Name="R_UploadedMedia" EntityType="TTLimitedModel.R_UploadedMedia" />
           <EntitySet Name="R_BarcodeMaster" EntityType="TTLimitedModel.R_BarcodeMaster" />
-          <EntitySet Name="R_PointsLedger" EntityType="TTLimitedModel.R_PointsLedger" />
           <EntitySet Name="R_CartDetail" EntityType="TTLimitedModel.R_CartDetail" />
           <EntitySet Name="R_Promotion" EntityType="TTLimitedModel.R_Promotion" />
           <EntitySet Name="R_ProductMaster" EntityType="TTLimitedModel.R_ProductMaster" />
@@ -344,6 +346,10 @@
           <EntitySet Name="R_MessageMaster" EntityType="TTLimitedModel.R_MessageMaster" />
           <EntitySet Name="R_MasterSetting" EntityType="TTLimitedModel.R_MasterSetting" />
           <EntitySet Name="R_RetailerMaster" EntityType="TTLimitedModel.R_RetailerMaster" />
+          <EntitySet Name="R_PointsLedger" EntityType="TTLimitedModel.R_PointsLedger" />
+          <FunctionImport Name="CalculatePointBalance" ReturnType="Collection(TTLimitedModel.BalancePoint)">
+            <Parameter Name="RetailerId" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="R_CityMaster">
           <Key>
@@ -425,24 +431,6 @@
           <Property Name="IsUsed" Type="Boolean" />
           <Property Name="Points" Type="Int32" />
           <Property Name="IsEncrypted" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="R_PointsLedger">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="BarcodeSno" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="RetailerId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
-          <Property Name="EarnSpentDate" Type="DateTime" Precision="3" />
-          <Property Name="LocationX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LocationY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
-          <Property Name="DabitPoints" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="CreditPoints" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ProductQty" Type="Int32" />
-          <Property Name="FirmName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="R_CartDetail">
           <Key>
@@ -607,6 +595,27 @@
           <Property Name="IsBlock" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="TotalEarned" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="R_PointsLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BarcodeSno" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RetailerId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="EarnSpentDate" Type="DateTime" Precision="3" />
+          <Property Name="LocationX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LocationY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="DabitPoints" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CreditPoints" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductQty" Type="Int32" />
+          <Property Name="FirmName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="BalancePoint" >
+          <Property Type="Decimal" Name="Balance" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -713,25 +722,6 @@
                 <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
                 <ScalarProperty Name="Barcode" ColumnName="Barcode" />
                 <ScalarProperty Name="Sno" ColumnName="Sno" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="R_PointsLedger">
-            <EntityTypeMapping TypeName="TTLimitedModel.R_PointsLedger">
-              <MappingFragment StoreEntitySet="R_PointsLedger">
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="FirmName" ColumnName="FirmName" />
-                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="CreditPoints" ColumnName="CreditPoints" />
-                <ScalarProperty Name="DabitPoints" ColumnName="DabitPoints" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
-                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
-                <ScalarProperty Name="EarnSpentDate" ColumnName="EarnSpentDate" />
-                <ScalarProperty Name="RetailerId" ColumnName="RetailerId" />
-                <ScalarProperty Name="BarcodeSno" ColumnName="BarcodeSno" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -910,6 +900,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="R_PointsLedger">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_PointsLedger">
+              <MappingFragment StoreEntitySet="R_PointsLedger">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="CreditPoints" ColumnName="CreditPoints" />
+                <ScalarProperty Name="DabitPoints" ColumnName="DabitPoints" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="EarnSpentDate" ColumnName="EarnSpentDate" />
+                <ScalarProperty Name="RetailerId" ColumnName="RetailerId" />
+                <ScalarProperty Name="BarcodeSno" ColumnName="BarcodeSno" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CalculatePointBalance" FunctionName="TTLimitedModel.Store.CalculatePointBalance" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TTLimitedModel.BalancePoint">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

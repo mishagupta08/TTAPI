@@ -193,6 +193,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BalancePoint.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BarcodeDetail.cs" />
     <Compile Include="Models\DashboardCounts.cs" />
     <Compile Include="Models\Filters.cs" />

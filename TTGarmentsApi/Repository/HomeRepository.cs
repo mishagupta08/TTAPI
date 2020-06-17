@@ -89,7 +89,7 @@ namespace TTGarmentsApi.Repository
 
                                 var states = await Task.Run(() => entity.R_StateMaster.ToList());
                                 var cities = await Task.Run(() => entity.R_CityMaster.ToList());
-                                var pointsList = await Task.Run(() => entity.R_PointsLedger.ToList());
+                                
 
 
                                 var state = await Task.Run(() => states.FirstOrDefault(s => s.Id == stId));
@@ -183,8 +183,7 @@ namespace TTGarmentsApi.Repository
 
                             var states = await Task.Run(() => entity.R_StateMaster.ToList());
                             var cities = await Task.Run(() => entity.R_CityMaster.ToList());
-                            var pointsList = await Task.Run(() => entity.R_PointsLedger.Where(r=>r.RetailerId == retailerDetail.ID).ToList());
-
+                            
 
                             var state = await Task.Run(() => states.FirstOrDefault(s => s.Id == stId));
                             if (state != null)
@@ -197,7 +196,7 @@ namespace TTGarmentsApi.Repository
                                 user.CityName = city.cityName;
                             }
 
-                            user.Points = await this.GetCurrentBalacePoints(pointsList, retailerDetail.ID);
+                            user.Points = await GetCurrentBalancePoints(retailerDetail.ID);
                             retailerDetail.Distance = Convert.ToDecimal(FindDistance(retailerDetail.AddressGpsX, retailerDetail.AddressGpsY, retailerDetail.ShopGpsX, retailerDetail.ShopGpsY));
                             user.Distance = retailerDetail.Distance / 1000;
 
@@ -814,8 +813,7 @@ namespace TTGarmentsApi.Repository
                 }
                 else if (operation == "BalancePoints")
                 {
-                    var pointsList = await Task.Run(() => entity.R_PointsLedger);
-                    responseDetail.Points = await this.GetCurrentBalacePoints(pointsList, pointsLedger.RetailerId);
+                    responseDetail.Points = await GetCurrentBalancePoints(pointsLedger.RetailerId);
                     responseDetail.Status = true;
                     responseDetail.ResponseValue = string.Empty;
                 }
@@ -1762,7 +1760,7 @@ namespace TTGarmentsApi.Repository
                                     pLedger = new R_PointsLedger();
                                     pLedger.Id = Guid.NewGuid().ToString().Substring(0, 5);
                                     pLedger.RetailerId = retailer.ID;
-                                    pLedger.EarnSpentDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                                    pLedger.EarnSpentDate = DateTime.Now;
                                     pLedger.LocationX = detail.LocationX;
                                     pLedger.LocationY = detail.LocationY;
                                     pLedger.ProductId = product.Id;
@@ -1786,7 +1784,7 @@ namespace TTGarmentsApi.Repository
                                     order.ProductName = product.Name;
                                     order.RetailerName = retailer.FirmName;
                                     order.RetailerId = detail.RetailerId;
-                                    order.Date = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                                    order.Date = DateTime.Now;
                                     order.PointsUsed = product.Points * pid.Quantity;
                                     order.Quantity = pid.Quantity;
                                     order.OrderStatus = Status.Pending.ToString();
@@ -1807,8 +1805,8 @@ namespace TTGarmentsApi.Repository
                                 }
 
                                 await entity.SaveChangesAsync();
-                                var pointsList = await Task.Run(() => entity.R_PointsLedger);
-                                responseDetail.Points = await this.GetCurrentBalacePoints(pointsList, detail.RetailerId);
+
+                                responseDetail.Points = await GetCurrentBalancePoints(detail.RetailerId);
                                 retailer.Points = responseDetail.Points;
                                 await entity.SaveChangesAsync();
 
@@ -1932,7 +1930,7 @@ namespace TTGarmentsApi.Repository
                         points.Id = Guid.NewGuid().ToString().Substring(0, 5);
                         points.Barcode = "-Add Rejected Product Points Back- On Order # " + order.OrderNo;
                         points.DabitPoints = order.PointsUsed;
-                        points.EarnSpentDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                        points.EarnSpentDate = DateTime.Now;
                         points.RetailerId = order.RetailerId;
                         points.FirmName = order.RetailerName;
                         points.ProductQty = 0;
@@ -1950,9 +1948,8 @@ namespace TTGarmentsApi.Repository
                         string message = "Your " + order.OrderNo + " had been delivered. Enjoy your Gift. If you did not receive it properly please inform through at kolkata@ttlimited.co.in within 2 days.";
                         await SendMessage(retailer.Mobile, message);
                     }
-                                
-                    var pointsList = await Task.Run(() => entity.R_PointsLedger);
-                    responseDetail.Points = await this.GetCurrentBalacePoints(pointsList, order.RetailerId);
+
+                    responseDetail.Points =await GetCurrentBalancePoints(order.RetailerId);
                     retailer.Points = responseDetail.Points;
                     await entity.SaveChangesAsync();
 
@@ -2032,7 +2029,7 @@ namespace TTGarmentsApi.Repository
                             
                                 // bar code is fresh so dabit points to reatiler.
                                 
-                                points.Id = Guid.NewGuid().ToString().Substring(0, 10);
+                                points.Id = Guid.NewGuid().ToString();
                                 points.BarcodeSno = barcode.Sno;
                                 points.Barcode = barcodeDetail.Barcode;
                                 points.DabitPoints = barcode.Points;
@@ -2051,8 +2048,7 @@ namespace TTGarmentsApi.Repository
 
                                 await entity.SaveChangesAsync();
                             
-                            var pointsList = await Task.Run(() => entity.R_PointsLedger.ToList());
-                            retailer.Points = await this.GetCurrentBalacePoints(pointsList, retailer.ID);
+                            retailer.Points = await GetCurrentBalancePoints(retailer.ID);
                             retailer.TotalEarned = retailer.TotalEarned + barcode.Points;
                             await entity.SaveChangesAsync();
                             responseDetail.Status = true;
@@ -3486,6 +3482,12 @@ namespace TTGarmentsApi.Repository
             return points;
         }
 
+        private async Task<decimal> GetCurrentBalancePoints(string retailerId)
+        {
+            var points = await Task.Run(() => (from r in entity.CalculatePointBalance(retailerId) select r.Balance).FirstOrDefault());
+            return points;
+        }
+
         private double FindDistance(string shopX, string shopY, string currentGpsX, string currentGpsY)
         {
             var sCoord = new GeoCoordinate(Convert.ToDouble(shopX), Convert.ToDouble(shopY));
@@ -3542,9 +3544,9 @@ namespace TTGarmentsApi.Repository
                         }
 
                         await entity.SaveChangesAsync();
-                        var pointsList = await Task.Run(() => entity.R_PointsLedger.Where(p => p.RetailerId == retailerId));
+                       
                         var data = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(o => o.ID == retailerId));
-                        data.Points = await this.GetCurrentBalacePoints(pointsList, data.ID);
+                        data.Points = await GetCurrentBalancePoints(data.ID);
                         data.TotalEarned = data.TotalEarned + points;
                         await entity.SaveChangesAsync();
                     }
