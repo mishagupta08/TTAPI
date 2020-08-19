@@ -63,7 +63,7 @@ namespace TTGarmentsApi.Repository
                             //else
                             {
                                 retailerDetail.ID = Guid.NewGuid().ToString().Substring(0, 5);
-                                retailerDetail.RegistrationDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                                retailerDetail.RegistrationDate = DateTime.Now;
                                 entity.R_RetailerMaster.Add(retailerDetail);
 
                                 /***Add Points on registration***/
@@ -72,7 +72,7 @@ namespace TTGarmentsApi.Repository
                                 points.Id = Guid.NewGuid().ToString().Substring(0, 5);
                                 points.Barcode = "-Registration Bonus-";
                                 points.DabitPoints = 50;
-                                points.EarnSpentDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                                points.EarnSpentDate = DateTime.Now;
                                 points.LocationX = retailerDetail.ShopGpsX;
                                 points.LocationY = retailerDetail.ShopGpsY;
                                 points.RetailerId = retailerDetail.ID;
@@ -417,7 +417,7 @@ namespace TTGarmentsApi.Repository
             {
                 messageDetail.Id = Guid.NewGuid().ToString().Substring(0, 7);
                 messageDetail.IsActive = true;
-                messageDetail.MessagePublishDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                messageDetail.MessagePublishDate = DateTime.Now;
                 entity.R_MessageMaster.Add(messageDetail);
                 await entity.SaveChangesAsync();
 
@@ -481,6 +481,10 @@ namespace TTGarmentsApi.Repository
                 else
                 {
                     msg.DateString = msg.MessagePublishDate.ToString();
+                    DateTime fromDate = msg.PublishFrom?? DateTime.Now;
+                    DateTime ToDate = msg.PublishTo??DateTime.Now;
+                    msg.PublishFromDate = fromDate.ToString("MM-dd-yyyy");
+                    msg.PublishToDate = ToDate.ToString("MM-dd-yyyy");
                     responseDetail.Status = true;
                     responseDetail.ResponseValue = new JavaScriptSerializer().Serialize(msg);
                 }
