@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using System.Threading;
 using System.Net.Http;
 using System.IO.Compression;
+using System.Data.Entity;
 
 namespace TTGarmentsApi.Repository
 {
@@ -317,7 +318,7 @@ namespace TTGarmentsApi.Repository
             {
                 promotionDetail.Id = Guid.NewGuid().ToString().Substring(0, 7);
                 promotionDetail.IsActive = true;
-                promotionDetail.CreatedDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                promotionDetail.CreatedDate = DateTime.Now;
                 entity.R_Promotion.Add(promotionDetail);
                 await entity.SaveChangesAsync();
 
@@ -854,7 +855,7 @@ namespace TTGarmentsApi.Repository
                         ///**Group list work**/
                         if (operation == "BalancePointById")
                         {
-                            var groupedCustomerList = list.GroupBy(u => u.EarnSpentDate).Select(grp => grp.ToList()).ToList();
+                            var groupedCustomerList = list.GroupBy(u => DbFunctions.TruncateTime(u.EarnSpentDate)).Select(grp => grp.ToList()).ToList();
                             var listData = new List<R_PointsLedger>();
 
                             foreach (var data in groupedCustomerList)
@@ -906,7 +907,7 @@ namespace TTGarmentsApi.Repository
 
                         /**Group list work**/
 
-                        var groupedCustomerList = list.GroupBy(u => u.EarnSpentDate).Select(grp => grp.ToList()).ToList();
+                        var groupedCustomerList = list.GroupBy(u => DbFunctions.TruncateTime(u.EarnSpentDate)).Select(grp => grp.ToList()).ToList();
                         var listData = new List<R_PointsLedger>();
 
                         foreach (var data in groupedCustomerList)
@@ -1425,7 +1426,7 @@ namespace TTGarmentsApi.Repository
                 var downloadDetail = new R_AppDownloadDetail();
                 downloadDetail.Id = Guid.NewGuid().ToString().Substring(0, 5);
                 downloadDetail.DeviceId = deviceId;
-                downloadDetail.Date = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                downloadDetail.Date = DateTime.Now;
                 entity.R_AppDownloadDetail.Add(downloadDetail);
                 await entity.SaveChangesAsync();
             }
@@ -2179,7 +2180,7 @@ namespace TTGarmentsApi.Repository
                 else
                 {
                     mediaDetail.Id = Guid.NewGuid().ToString().Substring(0, 5);
-                    mediaDetail.Date = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                    mediaDetail.Date = DateTime.Now;
                     mediaDetail.IsActive = true;
                     entity.R_UploadedMedia.Add(mediaDetail);
                     await entity.SaveChangesAsync();
@@ -2290,7 +2291,7 @@ namespace TTGarmentsApi.Repository
             {
                 bannerDetail.Id = Guid.NewGuid().ToString().Substring(0, 5);
                 bannerDetail.IsActive = true;
-                bannerDetail.Date = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                bannerDetail.Date = DateTime.Now;
                 entity.R_BannerMaster.Add(bannerDetail);
                 await entity.SaveChangesAsync();
                 responseDetail.Status = true;
@@ -2610,7 +2611,7 @@ namespace TTGarmentsApi.Repository
                 else
                 {
                     versionDetail.Id = Guid.NewGuid().ToString().Substring(0, 5);
-                    versionDetail.Date = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                    versionDetail.Date = DateTime.Now;
                     entity.R_AppVersion.Add(versionDetail);
                     await entity.SaveChangesAsync();
                     responseDetail.Status = true;
@@ -2721,7 +2722,7 @@ namespace TTGarmentsApi.Repository
             if (operation == "Add")
             {
                 notificationDetail.Id = Guid.NewGuid().ToString().Substring(0, 5);
-                notificationDetail.Date = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                notificationDetail.Date = DateTime.Now;
                 entity.R_NotificationManager.Add(notificationDetail);
                 await entity.SaveChangesAsync();
                 responseDetail.Status = true;
@@ -2885,7 +2886,7 @@ namespace TTGarmentsApi.Repository
             if (operation == "Add")
             {
                 notificationReply.Id = Guid.NewGuid().ToString().Substring(0, 5);
-                notificationReply.Date = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                notificationReply.Date = DateTime.Now;
                 entity.R_NotificationReply.Add(notificationReply);
                 await entity.SaveChangesAsync();
                 responseDetail.Status = true;
@@ -3540,7 +3541,7 @@ namespace TTGarmentsApi.Repository
                             pointsDetail.Id = Guid.NewGuid().ToString().Substring(0, 5);
                             pointsDetail.Barcode = "Promotion Entry Approved For :: " + promotionId + " # " + promoHeading;
                             pointsDetail.DabitPoints = points;
-                            pointsDetail.EarnSpentDate = DateTime.Parse(DateTime.Now.ToString(), CultureInfo.InvariantCulture);
+                            pointsDetail.EarnSpentDate = DateTime.Now;
                             pointsDetail.RetailerId = retailerId;
                             pointsDetail.ProductQty = 0;
                             entity.R_PointsLedger.Add(pointsDetail);
