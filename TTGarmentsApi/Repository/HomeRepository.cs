@@ -1770,7 +1770,7 @@ namespace TTGarmentsApi.Repository
                                     pLedger.LocationY = detail.LocationY;
                                     pLedger.ProductId = product.Id;
                                     pLedger.ProductName = product.Name;
-                                    pLedger.CreditPoints = product.Points * pid.Quantity;
+                                    pLedger.DabitPoints = product.Points * pid.Quantity;
                                     pLedger.Barcode = "Redeem Product";
                                     pLedger.ProductQty = pid.Quantity;
 
@@ -2037,7 +2037,7 @@ namespace TTGarmentsApi.Repository
                                 points.Id = Guid.NewGuid().ToString();
                                 points.BarcodeSno = barcode.Sno;
                                 points.Barcode = barcodeDetail.Barcode;
-                                points.DabitPoints = barcode.Points;
+                                points.CreditPoints = barcode.Points;
                                 points.EarnSpentDate = DateTime.Now;
                                 points.LocationX = barcodeDetail.LocationX;
                                 points.LocationY = barcodeDetail.LocationY;
