@@ -90,7 +90,7 @@ namespace TTGarmentsApi.Repository
 
                                 var states = await Task.Run(() => entity.R_StateMaster.ToList());
                                 var cities = await Task.Run(() => entity.R_CityMaster.ToList());
-                                
+
 
 
                                 var state = await Task.Run(() => states.FirstOrDefault(s => s.Id == stId));
@@ -184,7 +184,7 @@ namespace TTGarmentsApi.Repository
 
                             var states = await Task.Run(() => entity.R_StateMaster.ToList());
                             var cities = await Task.Run(() => entity.R_CityMaster.ToList());
-                            
+
 
                             var state = await Task.Run(() => states.FirstOrDefault(s => s.Id == stId));
                             if (state != null)
@@ -482,8 +482,8 @@ namespace TTGarmentsApi.Repository
                 else
                 {
                     msg.DateString = msg.MessagePublishDate.ToString();
-                    DateTime fromDate = msg.PublishFrom?? DateTime.Now;
-                    DateTime ToDate = msg.PublishTo??DateTime.Now;
+                    DateTime fromDate = msg.PublishFrom ?? DateTime.Now;
+                    DateTime ToDate = msg.PublishTo ?? DateTime.Now;
                     msg.PublishFromDate = fromDate.ToString("MM-dd-yyyy");
                     msg.PublishToDate = ToDate.ToString("MM-dd-yyyy");
                     responseDetail.Status = true;
@@ -711,7 +711,7 @@ namespace TTGarmentsApi.Repository
                 else
                 {
                     var pointsLedgerList = new List<R_PointsLedger>();
-                    var stri =  EncodeBarcode(filter.FilterValue, ConfigurationManager.AppSettings["Salt"]);
+                    var stri = EncodeBarcode(filter.FilterValue, ConfigurationManager.AppSettings["Salt"]);
                     if (!string.IsNullOrEmpty(filter.FilterValue))
                     {
                         filter.FilterValue = filter.FilterValue.ToLower();
@@ -1492,7 +1492,7 @@ namespace TTGarmentsApi.Repository
 
             catch (Exception ex)
             {
-                if ( ex.InnerException != null && ex.InnerException.StackTrace != null)
+                if (ex.InnerException != null && ex.InnerException.StackTrace != null)
                 {
                     responseDetail.ResponseValue = ex.InnerException.Message;
                 }
@@ -1947,24 +1947,24 @@ namespace TTGarmentsApi.Repository
 
                     await entity.SaveChangesAsync();
                     var retailer = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(p => p.ID == order.RetailerId));
-               
+
                     if (detail.OrderStatus == Status.Delivered.ToString())
                     {
                         string message = "Your " + order.OrderNo + " had been delivered. Enjoy your Gift. If you did not receive it properly please inform through at kolkata@ttlimited.co.in within 2 days.";
                         await SendMessage(retailer.Mobile, message);
                     }
 
-                    responseDetail.Points =await GetCurrentBalancePoints(order.RetailerId);
+                    responseDetail.Points = await GetCurrentBalancePoints(order.RetailerId);
                     retailer.Points = responseDetail.Points;
                     await entity.SaveChangesAsync();
 
                     responseDetail.ResponseValue = "Status updated successfully.";
                     responseDetail.Status = true;
 
-                    
+
                 }
 
-                
+
             }
 
             return responseDetail;
@@ -1972,14 +1972,14 @@ namespace TTGarmentsApi.Repository
 
         public async Task<Response> ScanBarcode(BarcodeDetail barcodeDetail)
         {
-            Response responseDetail = new Response();           
+            Response responseDetail = new Response();
             if (barcodeDetail == null || string.IsNullOrEmpty(barcodeDetail.RetailerId))
             {
                 responseDetail.ResponseValue = "Please send complete details.";
             }
 
             // First check if retailer available or not
-            var retailer = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(r=>r.ID == barcodeDetail.RetailerId));
+            var retailer = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(r => r.ID == barcodeDetail.RetailerId));
 
             if (retailer == null)
             {
@@ -2031,28 +2031,28 @@ namespace TTGarmentsApi.Repository
                         {
                             barcode.IsUsed = true;
                             var points = new R_PointsLedger();
-                            
-                                // bar code is fresh so dabit points to reatiler.
-                                
-                                points.Id = Guid.NewGuid().ToString();
-                                points.BarcodeSno = barcode.Sno;
-                                points.Barcode = barcodeDetail.Barcode;
-                                points.CreditPoints = barcode.Points;
-                                points.EarnSpentDate = DateTime.Now;
-                                points.LocationX = barcodeDetail.LocationX;
-                                points.LocationY = barcodeDetail.LocationY;
-                                points.RetailerId = barcodeDetail.RetailerId;
-                                points.FirmName = retailer.FirmName;
-                                points.ProductQty = 0;
+
+                            // bar code is fresh so dabit points to reatiler.
+
+                            points.Id = Guid.NewGuid().ToString();
+                            points.BarcodeSno = barcode.Sno;
+                            points.Barcode = barcodeDetail.Barcode;
+                            points.CreditPoints = barcode.Points;
+                            points.EarnSpentDate = DateTime.Now;
+                            points.LocationX = barcodeDetail.LocationX;
+                            points.LocationY = barcodeDetail.LocationY;
+                            points.RetailerId = barcodeDetail.RetailerId;
+                            points.FirmName = retailer.FirmName;
+                            points.ProductQty = 0;
 
 
-                                /*****Check for festive point*****/
-                                points.DabitPoints = await CheckPoints(points);
+                            /*****Check for festive point*****/
+                            points.DabitPoints = await CheckPoints(points);
 
-                                entity.R_PointsLedger.Add(points);
+                            entity.R_PointsLedger.Add(points);
 
-                                await entity.SaveChangesAsync();
-                            
+                            await entity.SaveChangesAsync();
+
                             retailer.Points = await GetCurrentBalancePoints(retailer.ID);
                             retailer.TotalEarned = retailer.TotalEarned + barcode.Points;
                             await entity.SaveChangesAsync();
@@ -3401,7 +3401,7 @@ namespace TTGarmentsApi.Repository
             {
                 Response responseDetail = new Response();
 
-                var unEncryptedBarcodes = await Task.Run(() => entity.R_BarcodeMaster.Where(b => !(b.IsEncrypted == true)));
+                var unEncryptedBarcodes = await Task.Run(() => entity.R_BarcodeMaster.Where(b => !(b.IsEncrypted == true) && b.GenerateDate != null));
 
                 var count = unEncryptedBarcodes.Count();
                 if (unEncryptedBarcodes == null || count == 0)
@@ -3507,7 +3507,7 @@ namespace TTGarmentsApi.Repository
         public async Task SendMessage(string mobileNo, string MessageBody)
         {
             var msgUrl = "http://49.50.77.216/API/SMSHttp.aspx?UserId=ttretailer&pwd=TTrlr456&Message={MessageBody}&Contacts={ContactsValue}&SenderId=TTRtlr";
-            
+
             msgUrl = msgUrl.Replace("{MessageBody}", MessageBody).Replace("{ContactsValue}", mobileNo);
 
             using (var httpClient = new HttpClient())
@@ -3549,7 +3549,7 @@ namespace TTGarmentsApi.Repository
                         }
 
                         await entity.SaveChangesAsync();
-                       
+
                         var data = await Task.Run(() => entity.R_RetailerMaster.FirstOrDefault(o => o.ID == retailerId));
                         data.Points = await GetCurrentBalancePoints(data.ID);
                         data.TotalEarned = data.TotalEarned + points;
@@ -3683,7 +3683,7 @@ namespace TTGarmentsApi.Repository
                 responseDetail.ResponseValue = "Please send complete details.";
             }
 
-             if (operation == "Edit")
+            if (operation == "Edit")
             {
                 var setting = entity.R_MasterSetting.FirstOrDefault(g => g.Id == details.Id);
                 if (setting == null)
@@ -3691,14 +3691,14 @@ namespace TTGarmentsApi.Repository
                     responseDetail.ResponseValue = "Details not found.";
                 }
                 else
-                {                    
-                        setting.HelplineNo = details.HelplineNo;                       
-                        responseDetail.Status = true;
-                        responseDetail.ResponseValue = "Updated successfully.";                    
-                        await entity.SaveChangesAsync();
+                {
+                    setting.HelplineNo = details.HelplineNo;
+                    responseDetail.Status = true;
+                    responseDetail.ResponseValue = "Updated successfully.";
+                    await entity.SaveChangesAsync();
                 }
             }
-            
+
             else if (operation == "List")
             {
                 var Settings = await Task.Run(() => entity.R_MasterSetting.FirstOrDefault());
@@ -3707,7 +3707,7 @@ namespace TTGarmentsApi.Repository
                     responseDetail.ResponseValue = "No Records found.";
                 }
                 else
-                {                    
+                {
                     responseDetail.Status = true;
                     responseDetail.ResponseValue = new JavaScriptSerializer().Serialize(Settings);
                 }

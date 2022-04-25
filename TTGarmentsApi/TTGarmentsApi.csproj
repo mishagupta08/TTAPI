@@ -194,15 +194,162 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlertUser.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditRetailerAllocation.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BalancePoint.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Barcode.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BarcodeDetail.cs" />
+    <Compile Include="Models\B_M_DistributorMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\country.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerData.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DashboardCounts.cs" />
+    <Compile Include="Models\DistributorList.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DistributorSummary.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Filters.cs" />
+    <Compile Include="Models\MaxLog.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MstAuditTypeMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MstDistExecutive.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MstFileCatalogue.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MstFileType.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MstProduct.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MstProductMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MstProductsbak01052020.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MstSize.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_ASMMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_AttendanceMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_CityStateMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_CompanyMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_DistributorMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_DistributorMAster08062020bak.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_DistributorMaster23032020.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_DistributorMasterOld.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_DSRMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_ExecutiveMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_FAQMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_GroupMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_NSMMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_ProdColorMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_ProdDescMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_ProdNameMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_ProdRangeMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_ProdSizeMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_ProductMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_RetailerMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_RSMMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_StateMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_SubGroupMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_UserGroupMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_UserMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_UserPermissionMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_VersionInfo.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_VpMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\M_WebMenuMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NotificationResult.cs" />
     <Compile Include="Models\OrderRequest.cs" />
     <Compile Include="Models\PartialClasses.cs" />
+    <Compile Include="Models\PostJson.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductNew.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ProductOrderDetail.cs" />
     <Compile Include="Models\ProfilePhoto.cs" />
     <Compile Include="Models\PromotionEntryDetail.cs" />
@@ -234,6 +381,12 @@
     <Compile Include="Models\R_FestivePointMaster.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\R_GeneratedBarcode.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\R_LogMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\R_MasterSetting.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
@@ -258,6 +411,9 @@
     <Compile Include="Models\R_PointsLedger.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\R_PointsLedgerBak03042022.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\R_ProductMaster.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
@@ -270,13 +426,109 @@
     <Compile Include="Models\R_RetailerMaster.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\R_RetailerMaster_copy.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\R_StateMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\R_TempPointsLedger.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\R_UploadedMedia.cs">
       <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SalesPerson.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_CheckStateCityAndInsert_Result.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\state.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\tblRegistration.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempAlertUser.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempASMMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempAuditMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempAuditTypeMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempCityStateMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempColorMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempCompanyMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempDescMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempDistributorMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempExecutiveMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempFAQMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempFileCatalogue.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempNameMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempNSMMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempOrder.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempProduct.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempProductMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempRangeMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempRetailerMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempRSMMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempSizeMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempVpMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrnLogin.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrnOrder.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrnOrderDetail.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TTCoupon.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TTGarments.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -291,6 +543,90 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TTGarments.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TTID_10.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TTID_5.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_AuditMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_AuditSummary.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_CatalogueView.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_CityStateMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_CompanyMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_DailyTarget.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_DistOrder.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_DistOrderDetail.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_DSR.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_ExecutiveTarget.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_FAQ.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_HalfYearlyTarget.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_MainOrder.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_MainOrderDetail.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_MasterProduct.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_MonthlyTarget.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_M_DistributorMaster.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_OrderXls.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_OrderXlsNew.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_ProductList.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_ProductList_.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_ProductXLS.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_QuarterlyTarget.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_Tasks.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_WeeklyTarget.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\V_YearlyTarget.cs">
+      <DependentUpon>TTGarments.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\HomeRepository.cs" />

@@ -19,5 +19,6 @@ namespace TTGarmentsApi.Models
         public Nullable<bool> IsUsed { get; set; }
         public Nullable<int> Points { get; set; }
         public Nullable<bool> IsEncrypted { get; set; }
+        public Nullable<System.DateTime> GenerateDate { get; set; }
     }
 }

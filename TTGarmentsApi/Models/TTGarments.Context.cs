@@ -27,29 +27,140 @@ namespace TTGarmentsApi.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<country> countries { get; set; }
+        public virtual DbSet<M_CompanyMaster> M_CompanyMaster { get; set; }
+        public virtual DbSet<M_DistributorMaster> M_DistributorMaster { get; set; }
+        public virtual DbSet<M_ExecutiveMaster> M_ExecutiveMaster { get; set; }
+        public virtual DbSet<M_GroupMaster> M_GroupMaster { get; set; }
+        public virtual DbSet<M_RetailerMaster> M_RetailerMaster { get; set; }
+        public virtual DbSet<M_SubGroupMaster> M_SubGroupMaster { get; set; }
+        public virtual DbSet<M_UserGroupMaster> M_UserGroupMaster { get; set; }
+        public virtual DbSet<M_UserMaster> M_UserMaster { get; set; }
+        public virtual DbSet<M_UserPermissionMaster> M_UserPermissionMaster { get; set; }
+        public virtual DbSet<MstSize> MstSizes { get; set; }
         public virtual DbSet<R_AdminMaster> R_AdminMaster { get; set; }
-        public virtual DbSet<R_CityMaster> R_CityMaster { get; set; }
-        public virtual DbSet<R_StateMaster> R_StateMaster { get; set; }
-        public virtual DbSet<R_DistributerMaster> R_DistributerMaster { get; set; }
         public virtual DbSet<R_AppDownloadDetail> R_AppDownloadDetail { get; set; }
+        public virtual DbSet<R_AppVersion> R_AppVersion { get; set; }
         public virtual DbSet<R_BannerMaster> R_BannerMaster { get; set; }
-        public virtual DbSet<R_MediaCategory> R_MediaCategory { get; set; }
-        public virtual DbSet<R_NotificationReply> R_NotificationReply { get; set; }
-        public virtual DbSet<R_UploadedMedia> R_UploadedMedia { get; set; }
         public virtual DbSet<R_BarcodeMaster> R_BarcodeMaster { get; set; }
         public virtual DbSet<R_CartDetail> R_CartDetail { get; set; }
-        public virtual DbSet<R_Promotion> R_Promotion { get; set; }
-        public virtual DbSet<R_ProductMaster> R_ProductMaster { get; set; }
-        public virtual DbSet<R_PromotionEntries> R_PromotionEntries { get; set; }
-        public virtual DbSet<R_AppVersion> R_AppVersion { get; set; }
-        public virtual DbSet<R_OrderMaster> R_OrderMaster { get; set; }
-        public virtual DbSet<R_NotificationResult> R_NotificationResult { get; set; }
-        public virtual DbSet<R_NotificationManager> R_NotificationManager { get; set; }
+        public virtual DbSet<R_CityMaster> R_CityMaster { get; set; }
+        public virtual DbSet<R_DistributerMaster> R_DistributerMaster { get; set; }
         public virtual DbSet<R_FestivePointMaster> R_FestivePointMaster { get; set; }
-        public virtual DbSet<R_MessageMaster> R_MessageMaster { get; set; }
+        public virtual DbSet<R_GeneratedBarcode> R_GeneratedBarcode { get; set; }
+        public virtual DbSet<R_LogMaster> R_LogMaster { get; set; }
         public virtual DbSet<R_MasterSetting> R_MasterSetting { get; set; }
-        public virtual DbSet<R_RetailerMaster> R_RetailerMaster { get; set; }
+        public virtual DbSet<R_MediaCategory> R_MediaCategory { get; set; }
+        public virtual DbSet<R_MessageMaster> R_MessageMaster { get; set; }
+        public virtual DbSet<R_NotificationManager> R_NotificationManager { get; set; }
+        public virtual DbSet<R_NotificationReply> R_NotificationReply { get; set; }
+        public virtual DbSet<R_NotificationResult> R_NotificationResult { get; set; }
+        public virtual DbSet<R_OrderMaster> R_OrderMaster { get; set; }
         public virtual DbSet<R_PointsLedger> R_PointsLedger { get; set; }
+        public virtual DbSet<R_ProductMaster> R_ProductMaster { get; set; }
+        public virtual DbSet<R_Promotion> R_Promotion { get; set; }
+        public virtual DbSet<R_PromotionEntries> R_PromotionEntries { get; set; }
+        public virtual DbSet<R_RetailerMaster> R_RetailerMaster { get; set; }
+        public virtual DbSet<R_StateMaster> R_StateMaster { get; set; }
+        public virtual DbSet<R_TempPointsLedger> R_TempPointsLedger { get; set; }
+        public virtual DbSet<R_UploadedMedia> R_UploadedMedia { get; set; }
+        public virtual DbSet<state> states { get; set; }
+        public virtual DbSet<tblRegistration> tblRegistrations { get; set; }
+        public virtual DbSet<TTCoupon> TTCoupons { get; set; }
+        public virtual DbSet<TTID_10> TTID_10 { get; set; }
+        public virtual DbSet<TTID_5> TTID_5 { get; set; }
+        public virtual DbSet<AlertUser> AlertUsers { get; set; }
+        public virtual DbSet<AuditMaster> AuditMasters { get; set; }
+        public virtual DbSet<AuditRetailerAllocation> AuditRetailerAllocations { get; set; }
+        public virtual DbSet<Barcode> Barcodes { get; set; }
+        public virtual DbSet<CustomerData> CustomerDatas { get; set; }
+        public virtual DbSet<DistributorList> DistributorLists { get; set; }
+        public virtual DbSet<DistributorSummary> DistributorSummaries { get; set; }
+        public virtual DbSet<M_ASMMaster> M_ASMMaster { get; set; }
+        public virtual DbSet<M_AttendanceMaster> M_AttendanceMaster { get; set; }
+        public virtual DbSet<M_CityStateMaster> M_CityStateMaster { get; set; }
+        public virtual DbSet<M_DistributorMAster08062020bak> M_DistributorMAster08062020bak { get; set; }
+        public virtual DbSet<M_DistributorMaster23032020> M_DistributorMaster23032020 { get; set; }
+        public virtual DbSet<M_DistributorMasterOld> M_DistributorMasterOld { get; set; }
+        public virtual DbSet<M_DSRMaster> M_DSRMaster { get; set; }
+        public virtual DbSet<M_FAQMaster> M_FAQMaster { get; set; }
+        public virtual DbSet<M_NSMMaster> M_NSMMaster { get; set; }
+        public virtual DbSet<M_ProdColorMaster> M_ProdColorMaster { get; set; }
+        public virtual DbSet<M_ProdDescMaster> M_ProdDescMaster { get; set; }
+        public virtual DbSet<M_ProdNameMaster> M_ProdNameMaster { get; set; }
+        public virtual DbSet<M_ProdRangeMaster> M_ProdRangeMaster { get; set; }
+        public virtual DbSet<M_ProdSizeMaster> M_ProdSizeMaster { get; set; }
+        public virtual DbSet<M_ProductMaster> M_ProductMaster { get; set; }
+        public virtual DbSet<M_RSMMaster> M_RSMMaster { get; set; }
+        public virtual DbSet<M_StateMaster> M_StateMaster { get; set; }
+        public virtual DbSet<M_VersionInfo> M_VersionInfo { get; set; }
+        public virtual DbSet<M_VpMaster> M_VpMaster { get; set; }
+        public virtual DbSet<M_WebMenuMaster> M_WebMenuMaster { get; set; }
+        public virtual DbSet<MaxLog> MaxLogs { get; set; }
+        public virtual DbSet<MstAuditTypeMaster> MstAuditTypeMasters { get; set; }
+        public virtual DbSet<MstDistExecutive> MstDistExecutives { get; set; }
+        public virtual DbSet<MstFileCatalogue> MstFileCatalogues { get; set; }
+        public virtual DbSet<MstFileType> MstFileTypes { get; set; }
+        public virtual DbSet<MstProductMaster> MstProductMasters { get; set; }
+        public virtual DbSet<MstProduct> MstProducts { get; set; }
+        public virtual DbSet<MstProductsbak01052020> MstProductsbak01052020 { get; set; }
+        public virtual DbSet<PostJson> PostJsons { get; set; }
+        public virtual DbSet<ProductNew> ProductNews { get; set; }
+        public virtual DbSet<R_PointsLedgerBak03042022> R_PointsLedgerBak03042022 { get; set; }
+        public virtual DbSet<R_RetailerMaster_copy> R_RetailerMaster_copy { get; set; }
+        public virtual DbSet<SalesPerson> SalesPersons { get; set; }
+        public virtual DbSet<TempAlertUser> TempAlertUsers { get; set; }
+        public virtual DbSet<TempASMMaster> TempASMMasters { get; set; }
+        public virtual DbSet<TempAuditMaster> TempAuditMasters { get; set; }
+        public virtual DbSet<TempAuditTypeMaster> TempAuditTypeMasters { get; set; }
+        public virtual DbSet<TempCityStateMaster> TempCityStateMasters { get; set; }
+        public virtual DbSet<TempColorMaster> TempColorMasters { get; set; }
+        public virtual DbSet<TempCompanyMaster> TempCompanyMasters { get; set; }
+        public virtual DbSet<TempDescMaster> TempDescMasters { get; set; }
+        public virtual DbSet<TempDistributorMaster> TempDistributorMasters { get; set; }
+        public virtual DbSet<TempExecutiveMaster> TempExecutiveMasters { get; set; }
+        public virtual DbSet<TempFAQMaster> TempFAQMasters { get; set; }
+        public virtual DbSet<TempFileCatalogue> TempFileCatalogues { get; set; }
+        public virtual DbSet<TempNameMaster> TempNameMasters { get; set; }
+        public virtual DbSet<TempNSMMaster> TempNSMMasters { get; set; }
+        public virtual DbSet<TempOrder> TempOrders { get; set; }
+        public virtual DbSet<TempProductMaster> TempProductMasters { get; set; }
+        public virtual DbSet<TempProduct> TempProducts { get; set; }
+        public virtual DbSet<TempRangeMaster> TempRangeMasters { get; set; }
+        public virtual DbSet<TempRetailerMaster> TempRetailerMasters { get; set; }
+        public virtual DbSet<TempRSMMaster> TempRSMMasters { get; set; }
+        public virtual DbSet<TempSizeMaster> TempSizeMasters { get; set; }
+        public virtual DbSet<TempVpMaster> TempVpMasters { get; set; }
+        public virtual DbSet<TrnLogin> TrnLogins { get; set; }
+        public virtual DbSet<TrnOrder> TrnOrders { get; set; }
+        public virtual DbSet<TrnOrderDetail> TrnOrderDetails { get; set; }
+        public virtual DbSet<B_M_DistributorMaster> B_M_DistributorMaster { get; set; }
+        public virtual DbSet<V_AuditMaster> V_AuditMaster { get; set; }
+        public virtual DbSet<V_AuditSummary> V_AuditSummary { get; set; }
+        public virtual DbSet<V_CatalogueView> V_CatalogueView { get; set; }
+        public virtual DbSet<V_CityStateMaster> V_CityStateMaster { get; set; }
+        public virtual DbSet<V_CompanyMaster> V_CompanyMaster { get; set; }
+        public virtual DbSet<V_DailyTarget> V_DailyTarget { get; set; }
+        public virtual DbSet<V_DistOrder> V_DistOrder { get; set; }
+        public virtual DbSet<V_DistOrderDetail> V_DistOrderDetail { get; set; }
+        public virtual DbSet<V_DSR> V_DSR { get; set; }
+        public virtual DbSet<V_ExecutiveTarget> V_ExecutiveTarget { get; set; }
+        public virtual DbSet<V_FAQ> V_FAQ { get; set; }
+        public virtual DbSet<V_HalfYearlyTarget> V_HalfYearlyTarget { get; set; }
+        public virtual DbSet<V_M_DistributorMaster> V_M_DistributorMaster { get; set; }
+        public virtual DbSet<V_MainOrder> V_MainOrder { get; set; }
+        public virtual DbSet<V_MainOrderDetail> V_MainOrderDetail { get; set; }
+        public virtual DbSet<V_MasterProduct> V_MasterProduct { get; set; }
+        public virtual DbSet<V_MonthlyTarget> V_MonthlyTarget { get; set; }
+        public virtual DbSet<V_OrderXls> V_OrderXls { get; set; }
+        public virtual DbSet<V_OrderXlsNew> V_OrderXlsNew { get; set; }
+        public virtual DbSet<V_ProductList> V_ProductList { get; set; }
+        public virtual DbSet<V_ProductList_> V_ProductList_ { get; set; }
+        public virtual DbSet<V_ProductXLS> V_ProductXLS { get; set; }
+        public virtual DbSet<V_QuarterlyTarget> V_QuarterlyTarget { get; set; }
+        public virtual DbSet<V_Tasks> V_Tasks { get; set; }
+        public virtual DbSet<V_WeeklyTarget> V_WeeklyTarget { get; set; }
+        public virtual DbSet<V_YearlyTarget> V_YearlyTarget { get; set; }
     
         public virtual ObjectResult<BalancePoint> CalculatePointBalance(string retailerId)
         {
@@ -58,6 +169,60 @@ namespace TTGarmentsApi.Models
                 new ObjectParameter("RetailerId", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalancePoint>("CalculatePointBalance", retailerIdParameter);
+        }
+    
+        public virtual int SendDSRSummary()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SendDSRSummary");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_CheckDis(string distributorNm, string mobl)
+        {
+            var distributorNmParameter = distributorNm != null ?
+                new ObjectParameter("DistributorNm", distributorNm) :
+                new ObjectParameter("DistributorNm", typeof(string));
+    
+            var moblParameter = mobl != null ?
+                new ObjectParameter("Mobl", mobl) :
+                new ObjectParameter("Mobl", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_CheckDis", distributorNmParameter, moblParameter);
+        }
+    
+        public virtual ObjectResult<Sp_CheckStateCityAndInsert_Result> Sp_CheckStateCityAndInsert(string stateName, string cityname, string pinCode)
+        {
+            var stateNameParameter = stateName != null ?
+                new ObjectParameter("StateName", stateName) :
+                new ObjectParameter("StateName", typeof(string));
+    
+            var citynameParameter = cityname != null ?
+                new ObjectParameter("Cityname", cityname) :
+                new ObjectParameter("Cityname", typeof(string));
+    
+            var pinCodeParameter = pinCode != null ?
+                new ObjectParameter("PinCode", pinCode) :
+                new ObjectParameter("PinCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_CheckStateCityAndInsert_Result>("Sp_CheckStateCityAndInsert", stateNameParameter, citynameParameter, pinCodeParameter);
+        }
+    
+        public virtual int sp_SendSummaryMail()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SendSummaryMail");
+        }
+    
+        [DbFunction("TTLimitedEntities", "ufn_CSVToTable")]
+        public virtual IQueryable<string> ufn_CSVToTable(string stringInput, string delimiter)
+        {
+            var stringInputParameter = stringInput != null ?
+                new ObjectParameter("StringInput", stringInput) :
+                new ObjectParameter("StringInput", typeof(string));
+    
+            var delimiterParameter = delimiter != null ?
+                new ObjectParameter("Delimiter", delimiter) :
+                new ObjectParameter("Delimiter", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<string>("[TTLimitedEntities].[ufn_CSVToTable](@StringInput, @Delimiter)", stringInputParameter, delimiterParameter);
         }
     }
 }
