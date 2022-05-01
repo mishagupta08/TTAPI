@@ -866,7 +866,7 @@ namespace TTGarmentsApi.Repository
                                 dt.EarnSpentDateString = date.ToString();
                                 dt.DabitPoints = data.Sum(p => p.DabitPoints);
                                 dt.CreditPoints = data.Sum(p => p.CreditPoints);
-                                dt.BalancePoint = ((dt.DabitPoints ?? 0) - (dt.CreditPoints ?? 0));
+                                dt.BalancePoint = ((dt.CreditPoints ?? 0) - (dt.DabitPoints ?? 0));
                                 listData.Add(dt);
                             }
                         }
@@ -3483,7 +3483,7 @@ namespace TTGarmentsApi.Repository
         {
             var dabitPoints = await Task.Run(() => pList.Where(d => d.RetailerId == retailerId).Sum(p => p.DabitPoints));
             var creditPoints = await Task.Run(() => pList.Where(d => d.RetailerId == retailerId).Sum(p => p.CreditPoints));
-            var points = ((dabitPoints ?? 0) - (creditPoints ?? 0));
+            var points = ((creditPoints ?? 0) - (dabitPoints ?? 0));
             return points;
         }
 
