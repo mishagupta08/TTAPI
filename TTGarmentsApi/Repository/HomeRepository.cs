@@ -940,19 +940,28 @@ namespace TTGarmentsApi.Repository
                     {
                         if (operation.Contains("EarnPointsByMonth"))
                         {
-                            pointsList = pointsList.Where(p => p.EarnSpentDate.Value.Month == pointsLedger.Month && p.CreditPoints == null);
+                            pointsList = from pl in pointsList
+                                         where pl.EarnSpentDate.Value.Month == pointsLedger.Month && pl.DabitPoints.Equals(null)
+                                         select pl;
                         }
+
                         else if (operation.Contains("EarnPointsByYear"))
                         {
-                            pointsList = pointsList.Where(p => p.EarnSpentDate.Value.Year == pointsLedger.Year && p.CreditPoints == null);
+                            pointsList = from pl in pointsList
+                                         where pl.EarnSpentDate.Value.Year == pointsLedger.Year && pl.DabitPoints.Equals(null)
+                                         select pl;
                         }
                         else if (operation.Contains("SpentPointsByMonth"))
                         {
-                            pointsList = pointsList.Where(p => p.EarnSpentDate.Value.Month == pointsLedger.Month && p.DabitPoints == null);
+                            pointsList = from pl in pointsList
+                                         where pl.EarnSpentDate.Value.Month == pointsLedger.Month && pl.CreditPoints.Equals(null)
+                                         select pl;
                         }
                         else if (operation.Contains("SpentPointsByYear"))
                         {
-                            pointsList = pointsList.Where(p => p.EarnSpentDate.Value.Year == pointsLedger.Year && p.DabitPoints == null);
+                            pointsList = from pl in pointsList
+                                         where pl.EarnSpentDate.Value.Year == pointsLedger.Year && pl.CreditPoints.Equals(null)
+                                         select pl;
                         }
 
                         if (pointsList == null || pointsList.Count() == 0)
