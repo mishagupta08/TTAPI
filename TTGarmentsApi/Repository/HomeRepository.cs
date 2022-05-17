@@ -72,7 +72,7 @@ namespace TTGarmentsApi.Repository
                                 var points = new R_PointsLedger();
                                 points.Id = Guid.NewGuid().ToString().Substring(0, 5);
                                 points.Barcode = "-Registration Bonus-";
-                                points.DabitPoints = 50;
+                                points.CreditPoints = 50;
                                 points.EarnSpentDate = DateTime.Now;
                                 points.LocationX = retailerDetail.ShopGpsX;
                                 points.LocationY = retailerDetail.ShopGpsY;
@@ -1943,7 +1943,7 @@ namespace TTGarmentsApi.Repository
                         var points = new R_PointsLedger();
                         points.Id = Guid.NewGuid().ToString().Substring(0, 5);
                         points.Barcode = "-Add Rejected Product Points Back- On Order # " + order.OrderNo;
-                        points.DabitPoints = order.PointsUsed;
+                        points.CreditPoints = order.PointsUsed;
                         points.EarnSpentDate = DateTime.Now;
                         points.RetailerId = order.RetailerId;
                         points.FirmName = order.RetailerName;
