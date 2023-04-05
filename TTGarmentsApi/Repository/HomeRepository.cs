@@ -645,35 +645,40 @@ namespace TTGarmentsApi.Repository
                     }
                     if (!string.IsNullOrEmpty(filter.FromDate))
                     {
-                        //String format = "dd-MM-yyyy";
-                        DateTime d1 = DateTime.Parse(filter.FromDate, CultureInfo.CurrentCulture);
+                        //String format = "dd-MMM-yyyy";
+                        DateTime localDateTime = DateTime.Today;
+                        //string formattedDateTime = localDateTime.ToString("yyyyMMdd", CultureInfo.InvariantCulture); //> 20160210
+                        DateTime d1 = DateTime.Parse(filter.FromDate, CultureInfo.InvariantCulture);
+                        DateTime d2 = DateTime.Parse(filter.ToDate, CultureInfo.InvariantCulture);
 
-                        if (string.IsNullOrEmpty(filter.FilterValue))
-                        {
-                            retailerList = await Task.Run(() => this.entity.R_RetailerMaster.Where(p => p.RegistrationDate >= d1).ToList());
-                        }
-                        else
-                        {
-                            retailerList = await Task.Run(() => retailerList.Where(p => p.RegistrationDate >= d1).ToList());
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(filter.ToDate))
-                    {
-                        filter.ToDate = filter.ToDate.Trim();
-
-                        String format = "dd-MM-yyyy";
-                        DateTime d2 = DateTime.Parse(filter.ToDate, null);
-
-                        //if (pointsLedgerList == null)
+                        //if (string.IsNullOrEmpty(filter.FilterValue))
                         //{
-                        //    pointsLedgerList = await Task.Run(() => this.entity.R_PointsLedger.Where(p => p.EarnSpentDate <= d2).ToList());
+                        //    retailerList = await Task.Run(() => this.entity.R_RetailerMaster.Where(p => p.RegistrationDate.Value.Date >= d1.Date).ToList());
                         //}
                         //else
-                        {
-                            retailerList = await Task.Run(() => retailerList.Where(p => p.RegistrationDate <= d2).ToList());
-                        }
+                        //{
+                        //    retailerList = await Task.Run(() => retailerList.Where(p => p.RegistrationDate >= d1).ToList());
+                        //}
+                        retailerList = await Task.Run(() => this.entity.R_RetailerMaster.Where(p => DbFunctions.TruncateTime(p.RegistrationDate) >= d1.Date && DbFunctions.TruncateTime(p.RegistrationDate) <= d2.Date).ToList());
                     }
+
+                    //if (!string.IsNullOrEmpty(filter.ToDate))
+                    //{
+                    //    filter.ToDate = filter.ToDate.Trim();
+
+                    //    String format = "dd-MM-yyyy";
+                    //    DateTime d2 = DateTime.Parse(filter.ToDate, null);
+
+                    //    //if (pointsLedgerList == null)
+                    //    //{
+                    //    //    pointsLedgerList = await Task.Run(() => this.entity.R_PointsLedger.Where(p => p.EarnSpentDate <= d2).ToList());
+                    //    //}
+                    //    //else
+                    //    //{
+                    //    //    retailerList = await Task.Run(() => retailerList.Where(p => p.RegistrationDate <= d2).ToList());
+                    //    //}
+                    //    retailerList = await Task.Run(() => this.entity.R_RetailerMaster.Where(p => DbFunctions.TruncateTime(p.RegistrationDate) <= d2.Date).ToList());
+                    //}
 
                     foreach (var data in retailerList)
                     {
