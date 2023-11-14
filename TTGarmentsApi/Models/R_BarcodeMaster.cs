@@ -20,5 +20,6 @@ namespace TTGarmentsApi.Models
         public Nullable<int> Points { get; set; }
         public Nullable<bool> IsEncrypted { get; set; }
         public Nullable<System.DateTime> GenerateDate { get; set; }
+        public Nullable<bool> IsFlag { get; set; }
     }
 }

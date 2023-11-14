@@ -42,7 +42,6 @@ namespace TTGarmentsApi.Models
         public virtual DbSet<R_AppDownloadDetail> R_AppDownloadDetail { get; set; }
         public virtual DbSet<R_AppVersion> R_AppVersion { get; set; }
         public virtual DbSet<R_BannerMaster> R_BannerMaster { get; set; }
-        public virtual DbSet<R_BarcodeMaster> R_BarcodeMaster { get; set; }
         public virtual DbSet<R_CartDetail> R_CartDetail { get; set; }
         public virtual DbSet<R_CityMaster> R_CityMaster { get; set; }
         public virtual DbSet<R_DistributerMaster> R_DistributerMaster { get; set; }
@@ -161,6 +160,7 @@ namespace TTGarmentsApi.Models
         public virtual DbSet<V_Tasks> V_Tasks { get; set; }
         public virtual DbSet<V_WeeklyTarget> V_WeeklyTarget { get; set; }
         public virtual DbSet<V_YearlyTarget> V_YearlyTarget { get; set; }
+        public virtual DbSet<R_BarcodeMaster> R_BarcodeMaster { get; set; }
     
         public virtual ObjectResult<BalancePoint> CalculatePointBalance(string retailerId)
         {

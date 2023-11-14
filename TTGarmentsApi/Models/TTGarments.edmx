@@ -6,18 +6,6 @@
     <edmx:StorageModels>
     <Schema Namespace="TTLimitedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.10Points' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="10Points">
-          <Property Name="Sno#" Type="float" />
-          <Property Name="Barcode" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.5Points' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="5Points">
-          <Property Name="Sno#" Type="float" />
-          <Property Name="Barcode" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'TTLimited.dbo.AlertUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AlertUser">
           <Key>
@@ -133,56 +121,6 @@ warning 6002: The table/view 'TTLimited.dbo.CustomerData' does not have a primar
           <Property Name="Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExecutiveId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.customerttdata' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="customerttdata">
-          <Property Name="No#" Type="nvarchar" MaxLength="255" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Name 2" Type="nvarchar" MaxLength="255" />
-          <Property Name="GST Registration No#" Type="nvarchar" MaxLength="255" />
-          <Property Name="Location Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="City" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address 2" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address 3" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone  No#" Type="float" />
-          <Property Name="Customer Security No#" Type="nvarchar" MaxLength="255" />
-          <Property Name="Customer Security Bal#(LCY)" Type="float" />
-          <Property Name="Cust Category channel" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone No#" Type="float" />
-          <Property Name="Contact" Type="nvarchar" MaxLength="255" />
-          <Property Name="Customer Posting Group" Type="nvarchar" MaxLength="255" />
-          <Property Name="Salesperson Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="Credit Limit (LCY)" Type="float" />
-          <Property Name="Payment Terms Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="State Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="E-Mail" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.CUSTTTData' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CUSTTTData">
-          <Property Name="No#" Type="nvarchar" MaxLength="255" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Name 2" Type="nvarchar" MaxLength="255" />
-          <Property Name="GST Registration No#" Type="nvarchar" MaxLength="255" />
-          <Property Name="Location Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="City" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address 2" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address 3" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone  No#" Type="float" />
-          <Property Name="Customer Security No#" Type="nvarchar" MaxLength="255" />
-          <Property Name="Customer Security Bal#(LCY)" Type="float" />
-          <Property Name="Cust Category channel" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone No#" Type="float" />
-          <Property Name="Contact" Type="nvarchar" MaxLength="255" />
-          <Property Name="Customer Posting Group" Type="nvarchar" MaxLength="255" />
-          <Property Name="Salesperson Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="Credit Limit (LCY)" Type="float" />
-          <Property Name="Payment Terms Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="State Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="E-Mail" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TTLimited.dbo.DistributorList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DistributorList">
@@ -1350,21 +1288,6 @@ warning 6002: The table/view 'TTLimited.dbo.MstProductsbak01052020' does not hav
           <Property Name="REecTimeStamp" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.NewDistributorList' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="NewDistributorList">
-          <Property Name="No#" Type="nvarchar" MaxLength="255" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address 2" Type="nvarchar" MaxLength="255" />
-          <Property Name="City" Type="nvarchar" MaxLength="255" />
-          <Property Name="STATE" Type="nvarchar" MaxLength="255" />
-          <Property Name="Contact" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone No#" Type="float" />
-          <Property Name="Phone No 2" Type="float" />
-          <Property Name="Customer Posting Group" Type="nvarchar" MaxLength="255" />
-          <Property Name="Salesperson Code" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'TTLimited.dbo.PostJson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PostJson">
           <Key>
@@ -1373,28 +1296,6 @@ warning 6002: The table/view 'TTLimited.dbo.PostJson' does not have a primary ke
           <Property Name="Json" Type="nvarchar(max)" />
           <Property Name="RecTimeStamp" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.ProductCategory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ProductCategory">
-          <Property Name="ID" Type="float" />
-          <Property Name="Category" Type="nvarchar" MaxLength="255" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.productmaster' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="productmaster">
-          <Property Name="Group" Type="nvarchar" MaxLength="255" />
-          <Property Name="Sub Group" Type="nvarchar" MaxLength="255" />
-          <Property Name="No#" Type="nvarchar" MaxLength="255" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" />
-          <Property Name="GST Group Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="HSN/SAC Code" Type="float" />
-          <Property Name="Size" Type="nvarchar" MaxLength="255" />
-          <Property Name="Quality Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="Quality" Type="nvarchar" MaxLength="255" />
-          <Property Name="groupid" Type="int" />
-          <Property Name="subgroupid" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TTLimited.dbo.ProductNew' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ProductNew">
@@ -1461,6 +1362,7 @@ warning 6002: The table/view 'TTLimited.dbo.ProductNew' does not have a primary 
           <Property Name="Points" Type="int" />
           <Property Name="IsEncrypted" Type="bit" />
           <Property Name="GenerateDate" Type="datetime" />
+          <Property Name="IsFlag" Type="bit" />
         </EntityType>
         <EntityType Name="R_CartDetail">
           <Key>
@@ -2850,12 +2752,6 @@ warning 6002: The table/view 'TTLimited.dbo.B#M_DistributorMaster' does not have
           <Property Name="FirmName" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.HYDt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="HYDt">
-          <Property Name="FrmDate" Type="datetime" />
-          <Property Name="ToDate" Type="datetime" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'TTLimited.dbo.V#AuditMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V#AuditMaster">
           <Key>
@@ -2991,16 +2887,6 @@ warning 6002: The table/view 'TTLimited.dbo.V#DailyTarget' does not have a prima
           <Property Name="AchPcs" Type="varchar" MaxLength="31" />
           <Property Name="AchStore" Type="varchar" MaxLength="31" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.V#Dashboard' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="V#Dashboard">
-          <Property Name="Dist_Cnt" Type="int" />
-          <Property Name="Exev_Cnt" Type="int" />
-          <Property Name="Retail_Cnt" Type="int" />
-          <Property Name="Prod_Cnt" Type="int" />
-          <Property Name="Order_Cnt" Type="int" />
-          <Property Name="ToOrder_Cnt" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TTLimited.dbo.V#DistOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V#DistOrder">
@@ -3570,11 +3456,6 @@ warning 6002: The table/view 'TTLimited.dbo.V#QuarterlyTarget' does not have a p
           <Property Name="AchStore" Type="varchar" MaxLength="31" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.v#Random' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="v#Random">
-          <Property Name="RandomNumber" Type="varchar" MaxLength="4" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'TTLimited.dbo.V#Tasks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V#Tasks">
           <Key>
@@ -3643,12 +3524,6 @@ warning 6002: The table/view 'TTLimited.dbo.V#YearlyTarget' does not have a prim
           <Property Name="AchPcs" Type="varchar" MaxLength="31" />
           <Property Name="AchStore" Type="varchar" MaxLength="31" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TTLimited.dbo.YDt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="YDt">
-          <Property Name="FrmDate" Type="datetime" />
-          <Property Name="ToDate" Type="datetime" />
-        </EntityType>-->
         <Function Name="CalculatePointBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RetailerId" Type="varchar" Mode="In" />
         </Function>
@@ -5537,7 +5412,6 @@ warning 6013: The table/view 'TTLimited.dbo.YDt' does not have a primary key def
           <EntitySet Name="R_AppDownloadDetail" EntityType="TTLimitedModel.R_AppDownloadDetail" />
           <EntitySet Name="R_AppVersion" EntityType="TTLimitedModel.R_AppVersion" />
           <EntitySet Name="R_BannerMaster" EntityType="TTLimitedModel.R_BannerMaster" />
-          <EntitySet Name="R_BarcodeMaster" EntityType="TTLimitedModel.R_BarcodeMaster" />
           <EntitySet Name="R_CartDetail" EntityType="TTLimitedModel.R_CartDetail" />
           <EntitySet Name="R_CityMaster" EntityType="TTLimitedModel.R_CityMaster" />
           <EntitySet Name="R_DistributerMaster" EntityType="TTLimitedModel.R_DistributerMaster" />
@@ -5671,6 +5545,7 @@ warning 6013: The table/view 'TTLimited.dbo.YDt' does not have a primary key def
             <Parameter Name="StringInput" Mode="In" Type="String" />
             <Parameter Name="Delimiter" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="R_BarcodeMaster" EntityType="TTLimitedModel.R_BarcodeMaster" />
         </EntityContainer>
         <ComplexType Name="BalancePoint" >
           <Property Type="Decimal" Name="Balance" Nullable="false" />
@@ -5946,17 +5821,6 @@ warning 6013: The table/view 'TTLimited.dbo.YDt' does not have a primary key def
           <Property Name="Url" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="R_BarcodeMaster">
-          <Key>
-            <PropertyRef Name="Sno" />
-          </Key>
-          <Property Name="Sno" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsUsed" Type="Boolean" />
-          <Property Name="Points" Type="Int32" />
-          <Property Name="IsEncrypted" Type="Boolean" />
-          <Property Name="GenerateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="R_CartDetail">
           <Key>
@@ -9024,6 +8888,18 @@ warning 6013: The table/view 'TTLimited.dbo.YDt' does not have a primary key def
           <Property Type="String" Name="ActiveStatus1" Nullable="false" MaxLength="1" />
           <Property Type="DateTime" Name="RecTimeStamp1" Nullable="false" Precision="23" />
         </ComplexType>
+        <EntityType Name="R_BarcodeMaster">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsUsed" Type="Boolean" />
+          <Property Name="Points" Type="Int32" />
+          <Property Name="IsEncrypted" Type="Boolean" />
+          <Property Name="GenerateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsFlag" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9321,18 +9197,6 @@ warning 6013: The table/view 'TTLimited.dbo.YDt' does not have a primary key def
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="R_BarcodeMaster">
-            <EntityTypeMapping TypeName="TTLimitedModel.R_BarcodeMaster">
-              <MappingFragment StoreEntitySet="R_BarcodeMaster">
-                <ScalarProperty Name="GenerateDate" ColumnName="GenerateDate" />
-                <ScalarProperty Name="IsEncrypted" ColumnName="IsEncrypted" />
-                <ScalarProperty Name="Points" ColumnName="Points" />
-                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="Sno" ColumnName="Sno" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11661,6 +11525,19 @@ warning 6013: The table/view 'TTLimited.dbo.YDt' does not have a primary key def
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_SendSummaryMail" FunctionName="TTLimitedModel.Store.sp_SendSummaryMail" />
           <FunctionImportMapping FunctionImportName="ufn_CSVToTable" FunctionName="TTLimitedModel.Store.ufn_CSVToTable" />
+          <EntitySetMapping Name="R_BarcodeMaster">
+            <EntityTypeMapping TypeName="TTLimitedModel.R_BarcodeMaster">
+              <MappingFragment StoreEntitySet="R_BarcodeMaster">
+                <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+                <ScalarProperty Name="GenerateDate" ColumnName="GenerateDate" />
+                <ScalarProperty Name="IsEncrypted" ColumnName="IsEncrypted" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Sno" ColumnName="Sno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

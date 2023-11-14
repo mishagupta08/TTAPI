@@ -20,7 +20,6 @@
         <EntityTypeShape EntityType="TTLimitedModel.R_AppDownloadDetail" Width="1.5" PointX="10.75" PointY="7.75" />
         <EntityTypeShape EntityType="TTLimitedModel.R_AppVersion" Width="1.5" PointX="8.75" PointY="10.75" />
         <EntityTypeShape EntityType="TTLimitedModel.R_BannerMaster" Width="1.5" PointX="10.75" PointY="10.75" />
-        <EntityTypeShape EntityType="TTLimitedModel.R_BarcodeMaster" Width="1.5" PointX="12.75" PointY="0.75" />
         <EntityTypeShape EntityType="TTLimitedModel.R_CartDetail" Width="1.5" PointX="12.75" PointY="3.75" />
         <EntityTypeShape EntityType="TTLimitedModel.R_CityMaster" Width="1.5" PointX="12.75" PointY="6.75" />
         <EntityTypeShape EntityType="TTLimitedModel.R_DistributerMaster" Width="1.5" PointX="12.75" PointY="9.75" />
@@ -139,6 +138,7 @@
         <EntityTypeShape EntityType="TTLimitedModel.V_Tasks" Width="1.5" PointX="36.75" PointY="30.75" />
         <EntityTypeShape EntityType="TTLimitedModel.V_WeeklyTarget" Width="1.5" PointX="36.75" PointY="36.75" />
         <EntityTypeShape EntityType="TTLimitedModel.V_YearlyTarget" Width="1.5" PointX="14.75" PointY="37.75" />
+        <EntityTypeShape EntityType="TTLimitedModel.R_BarcodeMaster" Width="1.5" PointX="21.375" PointY="37.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

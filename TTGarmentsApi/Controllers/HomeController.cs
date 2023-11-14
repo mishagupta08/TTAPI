@@ -164,7 +164,7 @@ namespace TTGarmentsApi.Controllers
         public async Task<IHttpActionResult> EncryptBarcodes()
         {
             repository = new HomeRepository();
-            var result = await this.repository.EncryptBarcodes();
+            var result = await this.repository.EncryptBarcodesTest();
             //var result = await this.repository.AssignRetailerFields();
             return Content(HttpStatusCode.OK, result, Configuration.Formatters.JsonFormatter);
         }

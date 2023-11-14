@@ -3460,6 +3460,58 @@ namespace TTGarmentsApi.Repository
                 // return e.Message.ToString();
             }
         }
+        public async Task<Response> EncryptBarcodesTest()
+        {
+            try
+            {
+                Response responseDetail = new Response();
+
+                var unEncryptedBarcodes = await Task.Run(() => entity.R_BarcodeMaster.Where(b => (b.IsFlag == true) && b.GenerateDate != null));
+
+                var count = unEncryptedBarcodes.Count();
+                if (unEncryptedBarcodes == null || count == 0)
+                {
+                    responseDetail.ResponseValue = "No UnEncrypted Barcodes Found.";
+                }
+                else
+                {
+                    var unbarcode = 0;
+                    var currentRecord = 0;
+
+                    while (count > currentRecord)
+                    {
+                        var codes = unEncryptedBarcodes.OrderBy(b => b.Sno).Skip(currentRecord).Take(500).ToList();
+                        var salt = ConfigurationManager.AppSettings["Salt"];
+                        foreach (var code in codes)
+                        {
+                            if (code.IsEncrypted != true)
+                            {
+                                var encrCode = EncodeBarcode(code.Barcode, salt);
+                                code.Barcode = encrCode;
+                                code.IsEncrypted = true;
+                                code.IsFlag = false;
+                                unbarcode++;
+                            }
+
+                            currentRecord++;
+                        }
+                        await entity.SaveChangesAsync();
+                    }
+                    responseDetail.Status = true;
+                    responseDetail.ResponseValue = unbarcode + " Barcodes Encrypted.";
+                }
+
+                return responseDetail;
+            }
+            catch (Exception e)
+            {
+                return new Response
+                {
+                    ResponseValue = e.Message + DateTime.Now.ToString()
+                };
+                // return e.Message.ToString();
+            }
+        }
 
         public static string EncodeBarcode(string pass, string salt) //encrypt password    
         {
